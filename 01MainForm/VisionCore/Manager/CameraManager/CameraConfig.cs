@@ -1,19 +1,32 @@
 ﻿using System.Xml.Serialization;
+using VisionCore.PluginBase;
 
 namespace VisionCore.Manager.CameraManager;
 
 /// <summary>
-/// 相机配置类（仅包含用户可见配置）
+/// 相机配置类
 /// </summary>
 [XmlRoot("CameraConfig")]
 public class CameraConfig
 {
     [XmlElement("SerialNumber")]
-    public string SerialNumber { get; set; }   // 相机序列号（唯一标识）
-
-    [XmlElement("Expain")]
-    public string Expain { get; set; } = "";   // 相机备注
+    public string SerialNumber { get; set; }
 
     [XmlElement("Manufacturer")]
-    public string Manufacturer { get; set; }   // 相机品牌（用于关联插件）
+    public string Manufacturer { get; set; }
+
+    [XmlElement("Expain")]
+    public string Expain { get; set; } = "";
+
+    [XmlElement("PluginInfo")]
+    public PluginInfo? PluginInfo { get; set; }
+
+    public CameraConfig() { }
+
+    public CameraConfig(string serialNumber, string manufacturer, PluginInfo? pluginInfo)
+    {
+        SerialNumber = serialNumber;
+        Manufacturer = manufacturer;
+        PluginInfo = pluginInfo;
+    }
 }

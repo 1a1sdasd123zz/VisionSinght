@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MainForm.Properties {
+namespace UniVision.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

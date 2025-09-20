@@ -7,8 +7,8 @@
     <ProjectGuid>{16BA9774-F2A0-4994-8850-9AC642310541}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MainForm</RootNamespace>
-    <AssemblyName>MainForm</AssemblyName>
+    <RootNamespace>UniVision</RootNamespace>
+    <AssemblyName>UniVision</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -115,6 +115,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,7 +129,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\03HardwareCameraNet\CameraInterface\HardwareCameraNet.csproj">
+    <ProjectReference Include="..\..\03HardwareCameraNet\HardwareCameraNet\HardwareCameraNet.csproj">
       <Project>{02d11c38-cc51-4ba5-ac42-c5091b86abbb}</Project>
       <Name>HardwareCameraNet</Name>
     </ProjectReference>

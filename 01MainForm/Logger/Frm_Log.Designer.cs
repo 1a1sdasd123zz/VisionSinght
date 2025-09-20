@@ -38,9 +38,9 @@
             this.col_Type = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_LogMessage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Infomation = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Info = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Warning = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Error = new DevExpress.XtraEditors.SimpleButton();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -72,6 +72,25 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Appearance.Header.BackColor = System.Drawing.Color.Black;
+            this.xtraTabPage1.Appearance.Header.ForeColor = System.Drawing.Color.Black;
+            this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage1.Appearance.Header.Options.UseForeColor = true;
+            this.xtraTabPage1.Appearance.HeaderActive.ForeColor = System.Drawing.Color.Black;
+            this.xtraTabPage1.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage1.Appearance.HeaderActive.Options.UseBorderColor = true;
+            this.xtraTabPage1.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage1.Appearance.HeaderDisabled.ForeColor = System.Drawing.Color.Black;
+            this.xtraTabPage1.Appearance.HeaderDisabled.Options.UseForeColor = true;
+            this.xtraTabPage1.Appearance.HeaderHotTracked.ForeColor = System.Drawing.Color.Black;
+            this.xtraTabPage1.Appearance.HeaderHotTracked.Options.UseBackColor = true;
+            this.xtraTabPage1.Appearance.HeaderHotTracked.Options.UseBorderColor = true;
+            this.xtraTabPage1.Appearance.HeaderHotTracked.Options.UseForeColor = true;
+            this.xtraTabPage1.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
+            this.xtraTabPage1.Appearance.PageClient.ForeColor = System.Drawing.Color.Black;
+            this.xtraTabPage1.Appearance.PageClient.Options.UseBackColor = true;
+            this.xtraTabPage1.Appearance.PageClient.Options.UseBorderColor = true;
+            this.xtraTabPage1.Appearance.PageClient.Options.UseForeColor = true;
             this.xtraTabPage1.Controls.Add(this.tableLayoutPanel1);
             this.xtraTabPage1.Controls.Add(this.memoEdit1);
             this.xtraTabPage1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -137,6 +156,7 @@
             this.col_Time.AppearanceHeader.Options.UseFont = true;
             this.col_Time.AppearanceHeader.Options.UseForeColor = true;
             this.col_Time.Caption = "时间";
+            this.col_Time.FieldName = "Time";
             this.col_Time.MaxWidth = 200;
             this.col_Time.MinWidth = 30;
             this.col_Time.Name = "col_Time";
@@ -155,6 +175,7 @@
             this.col_Type.AppearanceHeader.Options.UseBackColor = true;
             this.col_Type.AppearanceHeader.Options.UseFont = true;
             this.col_Type.Caption = "类型";
+            this.col_Type.FieldName = "Type";
             this.col_Type.MaxWidth = 100;
             this.col_Type.MinWidth = 10;
             this.col_Type.Name = "col_Type";
@@ -173,6 +194,7 @@
             this.col_LogMessage.AppearanceHeader.Options.UseBackColor = true;
             this.col_LogMessage.AppearanceHeader.Options.UseFont = true;
             this.col_LogMessage.Caption = "日志内容";
+            this.col_LogMessage.FieldName = "Content";
             this.col_LogMessage.MinWidth = 100;
             this.col_LogMessage.Name = "col_LogMessage";
             this.col_LogMessage.Visible = true;
@@ -182,59 +204,59 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Black;
-            this.flowLayoutPanel1.Controls.Add(this.btn_Infomation);
-            this.flowLayoutPanel1.Controls.Add(this.simpleButton2);
-            this.flowLayoutPanel1.Controls.Add(this.simpleButton3);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Info);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Warning);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Error);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(555, 43);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // btn_Infomation
+            // btn_Info
             // 
-            this.btn_Infomation.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_Infomation.Appearance.ForeColor = System.Drawing.Color.White;
-            this.btn_Infomation.Appearance.Options.UseBackColor = true;
-            this.btn_Infomation.Appearance.Options.UseForeColor = true;
-            this.btn_Infomation.Appearance.Options.UseTextOptions = true;
-            this.btn_Infomation.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.btn_Infomation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Infomation.ImageOptions.Image")));
-            this.btn_Infomation.Location = new System.Drawing.Point(3, 3);
-            this.btn_Infomation.Name = "btn_Infomation";
-            this.btn_Infomation.Size = new System.Drawing.Size(120, 35);
-            this.btn_Infomation.TabIndex = 0;
-            this.btn_Infomation.Text = "信息";
+            this.btn_Info.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Info.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btn_Info.Appearance.Options.UseBackColor = true;
+            this.btn_Info.Appearance.Options.UseForeColor = true;
+            this.btn_Info.Appearance.Options.UseTextOptions = true;
+            this.btn_Info.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.btn_Info.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Info.ImageOptions.Image")));
+            this.btn_Info.Location = new System.Drawing.Point(3, 3);
+            this.btn_Info.Name = "btn_Info";
+            this.btn_Info.Size = new System.Drawing.Size(150, 35);
+            this.btn_Info.TabIndex = 0;
+            this.btn_Info.Text = "信息";
             // 
-            // simpleButton2
+            // btn_Warning
             // 
-            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.simpleButton2.Appearance.ForeColor = System.Drawing.Color.White;
-            this.simpleButton2.Appearance.Options.UseBackColor = true;
-            this.simpleButton2.Appearance.Options.UseForeColor = true;
-            this.simpleButton2.Appearance.Options.UseTextOptions = true;
-            this.simpleButton2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(129, 3);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(120, 35);
-            this.simpleButton2.TabIndex = 1;
-            this.simpleButton2.Text = "警告";
+            this.btn_Warning.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Warning.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btn_Warning.Appearance.Options.UseBackColor = true;
+            this.btn_Warning.Appearance.Options.UseForeColor = true;
+            this.btn_Warning.Appearance.Options.UseTextOptions = true;
+            this.btn_Warning.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.btn_Warning.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Warning.ImageOptions.Image")));
+            this.btn_Warning.Location = new System.Drawing.Point(159, 3);
+            this.btn_Warning.Name = "btn_Warning";
+            this.btn_Warning.Size = new System.Drawing.Size(150, 35);
+            this.btn_Warning.TabIndex = 1;
+            this.btn_Warning.Text = "警告";
             // 
-            // simpleButton3
+            // btn_Error
             // 
-            this.simpleButton3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.simpleButton3.Appearance.ForeColor = System.Drawing.Color.White;
-            this.simpleButton3.Appearance.Options.UseBackColor = true;
-            this.simpleButton3.Appearance.Options.UseForeColor = true;
-            this.simpleButton3.Appearance.Options.UseTextOptions = true;
-            this.simpleButton3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(255, 3);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(120, 35);
-            this.simpleButton3.TabIndex = 2;
-            this.simpleButton3.Text = "错误";
+            this.btn_Error.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Error.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btn_Error.Appearance.Options.UseBackColor = true;
+            this.btn_Error.Appearance.Options.UseForeColor = true;
+            this.btn_Error.Appearance.Options.UseTextOptions = true;
+            this.btn_Error.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.btn_Error.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Error.ImageOptions.Image")));
+            this.btn_Error.Location = new System.Drawing.Point(315, 3);
+            this.btn_Error.Name = "btn_Error";
+            this.btn_Error.Size = new System.Drawing.Size(150, 35);
+            this.btn_Error.TabIndex = 2;
+            this.btn_Error.Text = "错误";
             // 
             // memoEdit1
             // 
@@ -246,8 +268,14 @@
             // 
             // xtraTabPage2
             // 
-            this.xtraTabPage2.Appearance.PageClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.xtraTabPage2.Appearance.PageClient.Options.UseBackColor = true;
+            this.xtraTabPage2.Appearance.Header.BackColor = System.Drawing.Color.Black;
+            this.xtraTabPage2.Appearance.Header.ForeColor = System.Drawing.Color.Black;
+            this.xtraTabPage2.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage2.Appearance.Header.Options.UseForeColor = true;
+            this.xtraTabPage2.Appearance.HeaderActive.ForeColor = System.Drawing.Color.Black;
+            this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage2.Appearance.HeaderActive.Options.UseBorderColor = true;
+            this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
             this.xtraTabPage2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -279,15 +307,16 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton btn_Infomation;
+        private DevExpress.XtraEditors.SimpleButton btn_Error;
+        private DevExpress.XtraEditors.SimpleButton btn_Warning;
+        private DevExpress.XtraEditors.SimpleButton btn_Info;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn col_Time;
         private DevExpress.XtraGrid.Columns.GridColumn col_Type;
+        private DevExpress.XtraGrid.Columns.GridColumn col_Content;
         private DevExpress.XtraGrid.Columns.GridColumn col_LogMessage;
     }
 }

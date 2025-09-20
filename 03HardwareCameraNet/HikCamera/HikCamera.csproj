@@ -46,10 +46,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\01MainForm\VisionCore\VisionCore.csproj">
-      <Project>{c1ec5193-9ae2-486b-a80f-e0cabc76993e}</Project>
-      <Name>VisionCore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HardwareCameraNet\HardwareCameraNet.csproj">
       <Project>{02d11c38-cc51-4ba5-ac42-c5091b86abbb}</Project>
       <Name>HardwareCameraNet</Name>

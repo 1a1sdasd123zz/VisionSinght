@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using HardwareCameraNet;
 using MvCameraControl;
 using IParameters = HardwareCameraNet.IParameters;
 
@@ -12,6 +13,8 @@ namespace HikCamera;
 /// <summary>
 /// 海康相机实现类
 /// </summary>
+// 标记支持的品牌名称
+[CameraManufacturer("海康面阵相机")]
 public class HikCamera : IDevice2D
 {
     /// <summary>
@@ -22,7 +25,6 @@ public class HikCamera : IDevice2D
 
 
     #region ICamera接口属性
-    public string Manufacturer => "海康面阵相机";
 
     // 图像回调事件（需显式实现事件添加/移除逻辑，确保线程安全）
     private event EventHandler<object> frameGrabedEvent;
@@ -118,10 +120,9 @@ public class HikCamera : IDevice2D
                 return -1;
             }
 
-            foreach (var devInfo in devInfoList)
+            foreach (var devInfo in devInfoList.Where(devInfo => SN == devInfo.SerialNumber))
             {
-                if (SN != devInfo.SerialNumber) continue;
-                device = MvCameraControl.DeviceFactory.CreateDevice(devInfo);
+                device = DeviceFactory.CreateDevice(devInfo);
                 ret = device.Open();
                 if (ret != MvError.MV_OK)
                 {
@@ -140,10 +141,9 @@ public class HikCamera : IDevice2D
             //device = DeviceFactory.CreateDevice(info);
 
             //ch: 判断是否为gige设备 | en: Determine whether it is a GigE device
-            if (device is IGigEDevice)
+            if (device is IGigEDevice gigEDevice)
             {
                 //ch: 转换为gigE设备 | en: Convert to Gige device
-                IGigEDevice gigEDevice = device as IGigEDevice;
 
                 // ch:探测网络最佳包大小(只对GigE相机有效) | en:Detection network optimal package size(It only works for the GigE camera)
                 ret = gigEDevice.GetOptimalPacketSize(out var optionPacketSize);
@@ -153,7 +153,7 @@ public class HikCamera : IDevice2D
                 }
                 else
                 {
-                    ret = device.Parameters.SetIntValue("GevSCPSPacketSize", optionPacketSize);
+                    ret = gigEDevice.Parameters.SetIntValue("GevSCPSPacketSize", optionPacketSize);
                     if (ret != MvError.MV_OK)
                     {
                         Console.WriteLine("Warning: Set Packet Size failed!");
@@ -197,7 +197,7 @@ public class HikCamera : IDevice2D
 
     public void SoftwareTriggerOnce()
     {
-        Parameters.TirggerSoure = "Software";
+        Parameters.TriggerSoure = "Software";
         device.Parameters.SetCommandValue("TriggerSoftware");
     }
 
@@ -473,7 +473,7 @@ public class HikCamera : IDevice2D
             }
         }
 
-        public string TirggerSoure
+        public string TriggerSoure
         {
             get
             {
@@ -487,7 +487,7 @@ public class HikCamera : IDevice2D
             }
         }
 
-        public List<string> TirggerSoures
+        public List<string> TriggerSoures
         {
             get
             {

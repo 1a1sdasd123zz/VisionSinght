@@ -8,7 +8,8 @@ using System.Reflection;
 using System.Threading;
 using System.Xml.Serialization;
 using HardwareCameraNet;
-using VisionCore.PluginBase;
+using Logger;
+using VisionCore.Manager.PluginManager;
 
 namespace VisionCore.Manager.CameraManager;
 
@@ -19,95 +20,88 @@ public sealed class CameraManager
         LazyThreadSafetyMode.ExecutionAndPublication);
     public static CameraManager Instance => _instance.Value;
 
-    // 插件目录（相对程序根目录）
-    private readonly string _pluginDirectory;
-
     // 配置文件路径
     private readonly string _configFilePath;
 
-    // 品牌-插件映射（品牌名 -> 插件信息）
-    private readonly Dictionary<string, PluginInfo> _manufacturerPluginMap = new(StringComparer.OrdinalIgnoreCase);
-
-    // 已加载的插件类型（用于创建实例）
-    private readonly Dictionary<string, Type> _pluginTypes = new(StringComparer.OrdinalIgnoreCase);
+    // 存储：厂商 -> (枚举方法委托, 插件类型)
+    private readonly Dictionary<string, (Func<List<string>> EnumerateFunc, Type PluginType)> _manufacturerPluginMap = new(StringComparer.OrdinalIgnoreCase);
 
     // 已添加的相机配置（用户配置）
     private readonly ConcurrentDictionary<string, CameraConfig> _cameraConfigs = new(StringComparer.OrdinalIgnoreCase);
 
     // 相机实例缓存（序列号 -> 相机实例）
     private readonly ConcurrentDictionary<string, ICamera> _cameraInstances = new(StringComparer.OrdinalIgnoreCase);
+    // 已连接的相机实例缓存（防止重复连接)
+    private readonly ConcurrentDictionary<string, ICamera> _temCameraInstances = new(StringComparer.OrdinalIgnoreCase);
 
     private CameraManager()
     {
-        // 初始化路径
-        _pluginDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins", "Camera");
         _configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs", "CameraConfigs.xml");
 
-        // 确保目录存在
-        if (!Directory.Exists(_pluginDirectory))
-            Directory.CreateDirectory(_pluginDirectory);
         if (!Directory.Exists(Path.GetDirectoryName(_configFilePath)!))
             Directory.CreateDirectory(Path.GetDirectoryName(_configFilePath)!);
-
-        // 初始化：加载插件 -> 加载配置
-        LoadPlugins();
+        BuildManufacturerMap(CameraPluginManager.Instance.GetLoadedPluginTypes().Values);
         LoadCameraConfigs();
     }
 
     #region 插件管理
-
     /// <summary>
-    /// 加载所有相机插件
+    /// 构建厂商映射：从插件类型中提取厂商信息和枚举方法
     /// </summary>
-    private void LoadPlugins()
+    private void BuildManufacturerMap(IEnumerable<Type> cameraTypes)
     {
         _manufacturerPluginMap.Clear();
-        _pluginTypes.Clear();
 
-        var dllFiles = Directory.GetFiles(_pluginDirectory, "*.dll", SearchOption.TopDirectoryOnly);
-        foreach (var dllPath in dllFiles)
+        foreach (var type in cameraTypes)
         {
-            try
+            // 提取厂商特性（标记插件所属厂商）
+            var manufacturerAttr = type.GetCustomAttribute<CameraManufacturerAttribute>();
+            if (manufacturerAttr == null)
             {
-                var assembly = Assembly.LoadFrom(dllPath);
-                foreach (var type in assembly.GetTypes())
+                Console.WriteLine($"插件{type.FullName}未标记CameraManufacturerAttribute，跳过");
+                continue;
+            }
+
+            string manufacturerName = manufacturerAttr.ManufacturerName;
+            if (_manufacturerPluginMap.ContainsKey(manufacturerName))
+            {
+                Console.WriteLine($"厂商{manufacturerName}已存在，跳过重复插件{type.FullName}");
+                continue;
+            }
+
+            // 查找静态枚举方法（无参数，返回List<string>序列号列表）
+            MethodInfo enumerateMethod = type.GetMethod(
+                name: "EnumerateDevices",
+                bindingAttr: BindingFlags.Public | BindingFlags.Static,
+                binder: null,  // 补充binder参数（可设为null）
+                types: Type.EmptyTypes,
+                modifiers: null  // 补充modifiers参数（可设为null）
+            );
+
+            if (enumerateMethod == null || enumerateMethod.ReturnType != typeof(List<string>))
+            {
+                Console.WriteLine($"插件{type.FullName}缺少有效的EnumerateDevices静态方法，跳过");
+                continue;
+            }
+
+            // 封装枚举委托（统一调用方式）
+            List<string> EnumerateFunc()
+            {
+                try
                 {
-                    // 筛选实现ICamera的非抽象类
-                    if (typeof(ICamera).IsAssignableFrom(type) && !type.IsAbstract && !type.IsInterface)
-                    {
-                        // 通过反射获取厂商名称（从实例属性获取）
-                        var instance = (ICamera)Activator.CreateInstance(type, string.Empty); // 临时实例用于获取属性
-                        var manufacturer = instance.Manufacturer;
-                        if (string.IsNullOrEmpty(manufacturer))
-                            continue;
-
-                        // 存储插件信息
-                        var pluginInfo = new PluginInfo
-                        {
-                            TypeName = type.FullName!,
-                            AssemblyName = assembly.GetName().Name!
-                        };
-
-                        _manufacturerPluginMap[manufacturer] = pluginInfo;
-                        _pluginTypes[type.FullName!] = type;
-
-                        Console.WriteLine($"加载相机插件：{manufacturer}（{type.FullName}）");
-                    }
+                    return (List<string>)enumerateMethod.Invoke(null, null) ?? [];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"枚举{manufacturerName}设备失败：{ex.InnerException?.Message}");
+                    return [];
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"加载插件失败（{dllPath}）：{ex.Message}");
-            }
-        }
-    }
 
-    /// <summary>
-    /// 获取所有支持的相机品牌
-    /// </summary>
-    public List<string> GetAllManufacturers()
-    {
-        return _manufacturerPluginMap.Keys.OrderBy(k => k).ToList();
+            // 添加到厂商映射
+            _manufacturerPluginMap.Add(manufacturerName, (EnumerateFunc, type));
+            Console.WriteLine($"注册厂商：{manufacturerName}（插件类型：{type.FullName}）");
+        }
     }
 
     #endregion
@@ -131,6 +125,15 @@ public sealed class CameraManager
             foreach (var config in configs)
             {
                 _cameraConfigs[config.SerialNumber] = config;
+                var cam = CreateCamera(config.Manufacturer, config.SerialNumber);
+                if (cam == null) continue;
+                var ret = cam.Open();
+                if (ret != 0)
+                {
+                    LogHelper.Warn($"打开[{config.Manufacturer}]相机[{config.SerialNumber}]失败,错误码:{ret}");
+                }
+                _cameraInstances.TryAdd(config.SerialNumber, cam);
+                _temCameraInstances.TryAdd(config.SerialNumber, cam);
             }
             Console.WriteLine($"加载相机配置：共{_cameraConfigs.Count}台");
         }
@@ -143,7 +146,7 @@ public sealed class CameraManager
     /// <summary>
     /// 保存相机配置到本地
     /// </summary>
-    public void SaveCameraConfigs()
+    private void SaveCameraConfigs()
     {
         try
         {
@@ -157,6 +160,8 @@ public sealed class CameraManager
         }
     }
 
+
+    //-----------对外API-----------
     /// <summary>
     /// 添加/更新相机配置
     /// </summary>
@@ -168,7 +173,12 @@ public sealed class CameraManager
         if (!_manufacturerPluginMap.ContainsKey(config.Manufacturer))
             throw new ArgumentException($"不支持的相机品牌：{config.Manufacturer}");
 
-        _cameraConfigs[config.SerialNumber] = config;
+        _cameraConfigs.AddOrUpdate(
+            config.SerialNumber,                // 键
+            config,                             // 如果不存在则添加的值
+            (_, _) => config           // 如果已存在则更新的值
+        );
+        _cameraInstances.TryAdd(config.SerialNumber, CreateCamera(config.Manufacturer, config.SerialNumber));
         SaveCameraConfigs();
     }
 
@@ -197,67 +207,80 @@ public sealed class CameraManager
 
     #endregion
 
+   
     #region 相机实例管理
 
     /// <summary>
-    /// 枚举指定品牌的设备（返回序列号列表）
+    /// 枚举指定厂商的设备（返回序列号列表）
     /// </summary>
-    public List<string> EnumerateDevices(string manufacturer)
+    public List<string> EnumerateDevices(string manufacturerName)
     {
-        if (!_manufacturerPluginMap.TryGetValue(manufacturer, out var pluginInfo))
-            return new List<string>();
+        if (string.IsNullOrEmpty(manufacturerName))
+        {
+            Console.WriteLine("厂商名称不能为空");
+            return [];
+        }
 
-        // 调用插件的静态枚举方法
-        var type = _pluginTypes[pluginInfo.TypeName];
-        var method = type.GetMethod("EnumerateDevices", BindingFlags.Public | BindingFlags.Static);
-        if (method == null)
-            return new List<string>();
+        lock (this)
+        {
+            if (_manufacturerPluginMap.TryGetValue(manufacturerName, out var item))
+            {
+                var devices = item.EnumerateFunc.Invoke();
+                Console.WriteLine($"枚举{manufacturerName}设备：{devices.Count}台");
+                return devices;
+            }
 
-        return (List<string>)method.Invoke(null, null)! ?? new List<string>();
+            Console.WriteLine($"未支持的厂商：{manufacturerName}");
+            return [];
+        }
     }
 
     /// <summary>
-    /// 获取相机实例（不存在则创建）
+    /// 根据厂商和序列号创建相机实例
     /// </summary>
-    public ICamera GetCamera(string serialNumber)
+    public ICamera CreateCamera(string manufacturerName, string serialNumber)
     {
-        // 从缓存获取
-        if (_cameraInstances.TryGetValue(serialNumber, out var camera))
-            return camera;
-
-        // 检查配置
-        if (!_cameraConfigs.TryGetValue(serialNumber, out var config))
-            throw new KeyNotFoundException($"未找到序列号为{serialNumber}的相机配置");
-
-        // 创建实例
-        camera = CreateCameraInstance(config);
-        if (camera != null)
+        if (string.IsNullOrEmpty(manufacturerName) || string.IsNullOrEmpty(serialNumber))
         {
-            _cameraInstances[serialNumber] = camera;
-        }
-        return camera;
-    }
-
-    /// <summary>
-    /// 创建相机实例
-    /// </summary>
-    private ICamera CreateCameraInstance(CameraConfig config)
-    {
-        if (!_manufacturerPluginMap.TryGetValue(config.Manufacturer, out var pluginInfo))
-            return null;
-
-        var type = _pluginTypes[pluginInfo.TypeName];
-        try
-        {
-            // 调用带序列号的构造函数
-            var camera = (ICamera)Activator.CreateInstance(type, config.SerialNumber)!;
-            return camera;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"创建{config.Manufacturer}相机实例失败：{ex.Message}");
+            Console.WriteLine("厂商名称和序列号不能为空");
             return null;
         }
+
+        // 先检查缓存：存在则直接返回（避免重复创建）
+        if (_temCameraInstances.TryGetValue(serialNumber, out var cachedCamera))
+        {
+            Console.WriteLine($"复用缓存的相机实例：{serialNumber}");
+            return cachedCamera;
+        }
+
+
+        // 1. 检查厂商是否支持
+        if (!_manufacturerPluginMap.TryGetValue(manufacturerName, out var item))
+        {
+            Console.WriteLine($"未支持的厂商：{manufacturerName}");
+            return null;
+        }
+
+        // 2. 检查设备是否已枚举（可选：避免创建不存在的设备）
+        var enumeratedDevices = item.EnumerateFunc.Invoke();
+        if (!enumeratedDevices.Contains(serialNumber, StringComparer.OrdinalIgnoreCase))
+        {
+            LogHelper.Warn($"相机枚举失败,{manufacturerName}无序列号{serialNumber}的设备");
+            return null;
+        }
+
+        if (_temCameraInstances.TryGetValue(serialNumber, out var cam))
+        {
+            return cam;
+        }
+
+        // 3. 创建实例（用插件类型完全限定名）
+        var newCamera = (ICamera)Activator.CreateInstance(item.PluginType, serialNumber)!;
+        if (newCamera == null) return null;
+        // 添加到线程安全缓存
+        _temCameraInstances.TryAdd(serialNumber, newCamera);
+        Console.WriteLine($"创建新相机实例并缓存：{serialNumber}");
+        return newCamera;
     }
 
     /// <summary>
@@ -268,5 +291,13 @@ public sealed class CameraManager
         return _cameraInstances.Values.ToList();
     }
 
+
+    /// <summary>
+    /// 获取所有支持的相机品牌
+    /// </summary>
+    public List<string> GetAllManufacturers()
+    {
+        return _manufacturerPluginMap.Keys.OrderBy(k => k).ToList();
+    }
     #endregion
 }

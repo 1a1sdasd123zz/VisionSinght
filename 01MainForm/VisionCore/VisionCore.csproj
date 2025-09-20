@@ -73,8 +73,7 @@
     </Compile>
     <Compile Include="Manager\CameraManager\CameraConfig.cs" />
     <Compile Include="Manager\CameraManager\CameraManager.cs" />
-    <Compile Include="Manager\CameraManager\ConfigHelper.cs" />
-    <Compile Include="Manager\PluginManager\PluginManager.cs" />
+    <Compile Include="Manager\PluginManager\CameraPluginManager.cs" />
     <Compile Include="PluginBase\Frm_ToolBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +111,10 @@
     <ProjectReference Include="..\..\03HardwareCameraNet\HardwareCameraNet\HardwareCameraNet.csproj">
       <Project>{02d11c38-cc51-4ba5-ac42-c5091b86abbb}</Project>
       <Name>HardwareCameraNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{21c53db6-0f97-41fd-b939-fb37ad9fa8bf}</Project>
+      <Name>Logger</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

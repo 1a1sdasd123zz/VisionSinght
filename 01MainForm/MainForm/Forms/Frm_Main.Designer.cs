@@ -1,4 +1,4 @@
-﻿namespace MainForm.Forms
+﻿namespace UniVision.Forms
 {
     partial class Frm_Main
     {
@@ -50,7 +50,7 @@
             this.dockPanel7 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel8 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel9 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel10 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel_Log = new DevExpress.XtraBars.Docking.DockPanel();
             this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -66,7 +66,6 @@
             this.dockPanel4_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanel5 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel5_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.frm_Log1 = new Logger.Frm_Log();
             ((System.ComponentModel.ISupportInitialize)(this.dev_MainBarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dev_MainDockManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
@@ -229,7 +228,7 @@
             this.dockPanel7,
             this.dockPanel8,
             this.dockPanel9,
-            this.dockPanel10});
+            this.dockPanel_Log});
             this.dev_MainDockManager.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -285,16 +284,16 @@
             this.dockPanel9.Size = new System.Drawing.Size(326, 82);
             this.dockPanel9.Text = "硬件状态";
             // 
-            // dockPanel10
+            // dockPanel_Log
             // 
-            this.dockPanel10.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
-            this.dockPanel10.FloatVertical = true;
-            this.dockPanel10.ID = new System.Guid("a8f203f8-ceee-43f0-94dc-333a9064d704");
-            this.dockPanel10.Location = new System.Drawing.Point(464, 803);
-            this.dockPanel10.Name = "dockPanel10";
-            this.dockPanel10.OriginalSize = new System.Drawing.Size(1328, 200);
-            this.dockPanel10.Size = new System.Drawing.Size(537, 82);
-            this.dockPanel10.Text = "信息栏";
+            this.dockPanel_Log.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanel_Log.FloatVertical = true;
+            this.dockPanel_Log.ID = new System.Guid("a8f203f8-ceee-43f0-94dc-333a9064d704");
+            this.dockPanel_Log.Location = new System.Drawing.Point(464, 803);
+            this.dockPanel_Log.Name = "dockPanel_Log";
+            this.dockPanel_Log.OriginalSize = new System.Drawing.Size(1328, 200);
+            this.dockPanel_Log.Size = new System.Drawing.Size(537, 82);
+            this.dockPanel_Log.Text = "信息栏";
             // 
             // repositoryItemCheckedComboBoxEdit1
             // 
@@ -413,22 +412,12 @@
             this.dockPanel5_Container.Size = new System.Drawing.Size(189, 706);
             this.dockPanel5_Container.TabIndex = 0;
             // 
-            // frm_Log1
-            // 
-            this.frm_Log1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frm_Log1.Location = new System.Drawing.Point(464, 803);
-            this.frm_Log1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.frm_Log1.Name = "frm_Log1";
-            this.frm_Log1.Size = new System.Drawing.Size(537, 82);
-            this.frm_Log1.TabIndex = 9;
-            // 
             // Frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1327, 905);
-            this.Controls.Add(this.frm_Log1);
-            this.Controls.Add(this.dockPanel10);
+            this.Controls.Add(this.dockPanel_Log);
             this.Controls.Add(this.dockPanel9);
             this.Controls.Add(this.dockPanel8);
             this.Controls.Add(this.dockPanel7);
@@ -481,7 +470,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
         private DevExpress.XtraBars.Docking.DockManager dev_MainDockManager;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel10;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel_Log;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel9;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel8;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel7;
@@ -496,6 +485,6 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel4_Container;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel5;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel5_Container;
-        private Logger.Frm_Log frm_Log1;
+        
     }
 }

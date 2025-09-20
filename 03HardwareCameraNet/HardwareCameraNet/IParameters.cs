@@ -20,9 +20,9 @@ public interface IParameters
     /// <summary>
     /// 当前触发源
     /// </summary>
-    string TirggerSoure { get;set; }
+    string TriggerSoure { get;set; }
     /// <summary>
     /// 相机触发源枚举项
     /// </summary>
-    List<string> TirggerSoures { get; }
+    List<string> TriggerSoures { get; }
 }

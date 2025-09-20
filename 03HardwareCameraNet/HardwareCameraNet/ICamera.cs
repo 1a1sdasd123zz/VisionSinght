@@ -20,10 +20,6 @@ public interface ICamera
 
     #region 属性
     /// <summary>
-    /// 品牌标识用于显示和枚举对应品牌相机，如：Basler、Daheng、Hikvision等
-    /// </summary>
-    string Manufacturer { get; }
-    /// <summary>
     /// 设备序列号
     /// </summary>
     string SN { get; }
@@ -45,6 +41,33 @@ public interface ICamera
     /// <summary>
     /// 关闭相机
     /// </summary>
+    ///     /// <summary>
+    /// 软触发一次
+    /// </summary>
+    void SoftwareTriggerOnce();
+    /// <summary>
+    /// 持续抓图
+    /// </summary>
+    /// <returns></returns>
+    void ContinuousGrab();
+    /// <summary>
+    /// 停止持续抓图
+    /// </summary>
+    void StopContinuousGrab();
+    /// <summary>
+    /// 开始抓图
+    /// </summary>
+    /// <returns></returns>
+    int StartGrabbing();
+    /// <summary>
+    /// 停止抓图
+    /// </summary>
+    /// <returns></returns>
+    int StopGrabbing();
+    /// <summary>
+    /// 断开相机
+    /// </summary>
+    void DisConnet();
     void Close();
     #endregion
 }

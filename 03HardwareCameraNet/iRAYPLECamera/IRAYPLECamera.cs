@@ -7,10 +7,13 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using HardwareCameraNet;
 using MVSDK_Net;
 
 namespace iRAYPLECamera;
 
+// 标记支持的品牌名称
+[CameraManufacturer("华睿面阵相机")]
 public class IRAYPLECamera : IDevice2D
 {
 
@@ -34,7 +37,6 @@ public class IRAYPLECamera : IDevice2D
     #endregion
 
     #region 属性
-    public string Manufacturer => "华睿面阵相机";
     // 图像回调事件（需显式实现事件添加/移除逻辑，确保线程安全）
     private event EventHandler<object> frameGrabedEvent;
     public event EventHandler<object> FrameGrabedEvent
@@ -564,7 +566,7 @@ public class IRAYPLECamera : IDevice2D
             }
         }
 
-        public string TirggerSoure
+        public string TriggerSoure
         {
             get
             {
@@ -580,7 +582,7 @@ public class IRAYPLECamera : IDevice2D
             }
         }
 
-        public List<string> TirggerSoures
+        public List<string> TriggerSoures
         {
             get
             {

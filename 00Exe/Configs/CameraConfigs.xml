@@ -1,15 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<CameraConfigCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <CameraConfig>
-    <SerialNumber>DA3825819</SerialNumber>
-    <Expain />
-    <PluginTypeName>HikCameraPlugin.HikCamera</PluginTypeName>
-    <PluginAssemblyName>HikCameraPlugin</PluginAssemblyName>
-  </CameraConfig>
+<?xml version="1.0"?>
+<ArrayOfCameraConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CameraConfig>
     <SerialNumber>00G44626044</SerialNumber>
-    <Expain />
-    <PluginTypeName>HikCameraPlugin.HikCamera</PluginTypeName>
-    <PluginAssemblyName>HikCameraPlugin</PluginAssemblyName>
+    <Manufacturer>海康面阵相机</Manufacturer>
+    <Expain>相机0</Expain>
+    <PluginInfo>
+      <TypeName>HikCamera.HikCamera</TypeName>
+      <AssemblyName>HikCamera</AssemblyName>
+    </PluginInfo>
   </CameraConfig>
-</CameraConfigCollection>
+</ArrayOfCameraConfig>

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using MainForm.Forms;
+using UniVision.Forms;
 
-namespace MainForm;
+namespace UniVision;
 
 static class Program
 {

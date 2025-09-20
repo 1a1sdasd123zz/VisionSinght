@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "01MainForm\Logger
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisionCore", "01MainForm\VisionCore\VisionCore.csproj", "{C1EC5193-9AE2-486B-A80F-E0CABC76993E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainForm", "01MainForm\MainForm\MainForm.csproj", "{16BA9774-F2A0-4994-8850-9AC642310541}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniVision", "01MainForm\MainForm\UniVision.csproj", "{16BA9774-F2A0-4994-8850-9AC642310541}"
 	ProjectSection(ProjectDependencies) = postProject
 		{72372FEE-826B-42F8-9B33-1D4A9646DEFC} = {72372FEE-826B-42F8-9B33-1D4A9646DEFC}
 	EndProjectSection
