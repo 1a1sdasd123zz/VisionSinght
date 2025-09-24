@@ -1,5 +1,4 @@
 ﻿#nullable enable
-using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,7 +10,7 @@ namespace Logger;
 public partial class Frm_Log : UserControl
 {
     // 当前过滤类型，null表示全部
-    private LogLevel? currentFilter = null;
+    private LogLevel? currentFilter;
 
     public Frm_Log()
     {
@@ -41,7 +40,7 @@ public partial class Frm_Log : UserControl
 
         var logs = currentFilter == null
             ? LogHelper.Logs.ToList()
-            : LogHelper.Logs.Where(l => l.Level == LogLevel.Info).ToList();
+            : LogHelper.Logs.Where(l => l.Level == currentFilter).ToList();
 
         gridControl1.DataSource = logs;
         UpdateButtonText();
@@ -59,6 +58,19 @@ public partial class Frm_Log : UserControl
         btn_Info.Text = $"信息({infoCount})";
         btn_Warning.Text = $"警告({warnCount})";
         btn_Error.Text = $"错误({errorCount})";
+
+        // 重置所有按钮颜色
+        btn_Info.Appearance.BackColor = Color.FromArgb(64,64,64);
+        btn_Warning.Appearance.BackColor = Color.FromArgb(64, 64, 64);
+        btn_Error.Appearance.BackColor = Color.FromArgb(64, 64, 64);
+
+        // 根据当前过滤类型设置按钮颜色
+        if (currentFilter == LogLevel.Info)
+            btn_Info.Appearance.BackColor = Color.Lime;
+        else if (currentFilter == LogLevel.Warn)
+            btn_Warning.Appearance.BackColor = Color.Lime;
+        else if (currentFilter == LogLevel.Error)
+            btn_Error.Appearance.BackColor = Color.Lime;
     }
 
     /// <summary>
@@ -66,10 +78,7 @@ public partial class Frm_Log : UserControl
     /// </summary>
     private void ToggleFilter(LogLevel level)
     {
-        if (currentFilter == level)
-            currentFilter = null;
-        else
-            currentFilter = level;
+        currentFilter = currentFilter == level ? null : level;
 
         UpdateLogView();
     }

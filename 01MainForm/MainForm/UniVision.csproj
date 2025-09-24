@@ -59,10 +59,8 @@
     <Reference Include="DevExpress.Printing.v24.2.Core" />
     <Reference Include="DevExpress.Drawing.v24.2" />
     <Reference Include="DevExpress.XtraGrid.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="Logger">
-      <HintPath>..\Logger\obj\Debug\Logger.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -133,10 +131,23 @@
       <Project>{02d11c38-cc51-4ba5-ac42-c5091b86abbb}</Project>
       <Name>HardwareCameraNet</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{21c53db6-0f97-41fd-b939-fb37ad9fa8bf}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VisionCore\VisionCore.csproj">
       <Project>{c1ec5193-9ae2-486b-a80f-e0cabc76993e}</Project>
       <Name>VisionCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\循环.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stop_Red.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\查看变量.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

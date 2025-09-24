@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using VisionCore.PluginBase;
-
-namespace CameraCapture2D;
+﻿namespace CameraCapture2D;
 
 //[Category("图像采集")]
 //[DisplayName("面阵相机")]

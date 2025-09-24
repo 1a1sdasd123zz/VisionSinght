@@ -1,4 +1,4 @@
-﻿// VisionCore/Manager/CameraManager/CameraManager.cs
+﻿#nullable enable
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -15,6 +15,12 @@ namespace VisionCore.Manager.CameraManager;
 
 public sealed class CameraManager
 {
+    /// <summary>
+    /// 相机状态变更事件，string-设备序列号，string-设备名，bool-连接状态
+    /// </summary>
+    public event Action<string, string, bool>? DeviceStateChanged; // deviceId,
+    private readonly ConcurrentDictionary<string, (string expain, bool isConnected)> _deviceStates = new();
+
     // 单例实例（线程安全）
     private static readonly Lazy<CameraManager> _instance = new(() => new CameraManager(),
         LazyThreadSafetyMode.ExecutionAndPublication);
@@ -30,7 +36,7 @@ public sealed class CameraManager
     private readonly ConcurrentDictionary<string, CameraConfig> _cameraConfigs = new(StringComparer.OrdinalIgnoreCase);
 
     // 相机实例缓存（序列号 -> 相机实例）
-    private readonly ConcurrentDictionary<string, ICamera> _cameraInstances = new(StringComparer.OrdinalIgnoreCase);
+    private readonly ConcurrentDictionary<string, ICamera?> _cameraInstances = new(StringComparer.OrdinalIgnoreCase);
     // 已连接的相机实例缓存（防止重复连接)
     private readonly ConcurrentDictionary<string, ICamera> _temCameraInstances = new(StringComparer.OrdinalIgnoreCase);
 
@@ -126,7 +132,12 @@ public sealed class CameraManager
             {
                 _cameraConfigs[config.SerialNumber] = config;
                 var cam = CreateCamera(config.Manufacturer, config.SerialNumber);
-                if (cam == null) continue;
+                if (cam == null)
+                {
+                    // 连接、掉线、备注修改时调用
+                    UpdateDeviceState(config.SerialNumber, config.Expain, false);
+                    continue;
+                }
                 var ret = cam.Open();
                 if (ret != 0)
                 {
@@ -134,6 +145,9 @@ public sealed class CameraManager
                 }
                 _cameraInstances.TryAdd(config.SerialNumber, cam);
                 _temCameraInstances.TryAdd(config.SerialNumber, cam);
+                cam.DisConnetEvent += DisConnectedEventHandler;
+                // 连接、掉线、备注修改时调用
+                UpdateDeviceState(config.SerialNumber, config.Expain, cam.IsConnected);
             }
             Console.WriteLine($"加载相机配置：共{_cameraConfigs.Count}台");
         }
@@ -159,16 +173,46 @@ public sealed class CameraManager
             Console.WriteLine($"保存配置失败：{ex.Message}");
         }
     }
+    #endregion
+
+    #region 设备状态事件
+
+
+    private void UpdateDeviceState(string sn, string expain, bool isConnected)
+    {
+        _deviceStates[sn] = (expain, isConnected);
+        DeviceStateChanged?.Invoke(sn, expain, isConnected);
+    }
+
+    public IReadOnlyDictionary<string, (string expain, bool isConnected)> GetAllDeviceStates()
+    {
+        return _deviceStates;
+    }
+
+
+    #endregion
+
+    private void DisConnectedEventHandler(object sender, bool disconnect)
+    {
+        var sn = ((ICamera)sender).SN;
+        if ((bool)disconnect)
+            LogHelper.Warn($"序列号[{sn}]相机掉线了");
+        else
+            LogHelper.Warn($"序列号[{sn}]相机重连成功");
+
+        UpdateDeviceState(sn, "", !disconnect);
+    }
 
 
     //-----------对外API-----------
     /// <summary>
     /// 添加/更新相机配置
     /// </summary>
-    public void AddOrUpdateCameraConfig(CameraConfig config)
+    public bool AddOrUpdateCameraConfig(CameraConfig config)
     {
         if (string.IsNullOrEmpty(config.SerialNumber) || string.IsNullOrEmpty(config.Manufacturer))
             throw new ArgumentException("序列号和品牌不能为空");
+            
 
         if (!_manufacturerPluginMap.ContainsKey(config.Manufacturer))
             throw new ArgumentException($"不支持的相机品牌：{config.Manufacturer}");
@@ -180,6 +224,7 @@ public sealed class CameraManager
         );
         _cameraInstances.TryAdd(config.SerialNumber, CreateCamera(config.Manufacturer, config.SerialNumber));
         SaveCameraConfigs();
+        return true;
     }
 
     /// <summary>
@@ -205,10 +250,6 @@ public sealed class CameraManager
         return _cameraConfigs.Values.ToList();
     }
 
-    #endregion
-
-   
-    #region 相机实例管理
 
     /// <summary>
     /// 枚举指定厂商的设备（返回序列号列表）
@@ -238,7 +279,7 @@ public sealed class CameraManager
     /// <summary>
     /// 根据厂商和序列号创建相机实例
     /// </summary>
-    public ICamera CreateCamera(string manufacturerName, string serialNumber)
+    public ICamera? CreateCamera(string manufacturerName, string serialNumber)
     {
         if (string.IsNullOrEmpty(manufacturerName) || string.IsNullOrEmpty(serialNumber))
         {
@@ -286,7 +327,7 @@ public sealed class CameraManager
     /// <summary>
     /// 获取所有相机实例
     /// </summary>
-    public List<ICamera> GetAllCameras()
+    public List<ICamera?> GetAllCameras()
     {
         return _cameraInstances.Values.ToList();
     }
@@ -299,5 +340,32 @@ public sealed class CameraManager
     {
         return _manufacturerPluginMap.Keys.OrderBy(k => k).ToList();
     }
-    #endregion
+
+    public void UnInitialize()
+    {
+        foreach (var item in _cameraInstances.Values)
+        {
+            try
+            {
+                item.DisConnetEvent -= DisConnectedEventHandler;
+                item.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+        foreach (var item in _temCameraInstances.Values)
+        {
+            try
+            {
+                item.DisConnetEvent -= DisConnectedEventHandler;
+                item.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+    }
 }

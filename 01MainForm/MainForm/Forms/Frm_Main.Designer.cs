@@ -30,62 +30,64 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Main));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.dev_MainBarManager = new DevExpress.XtraBars.BarManager(this.components);
-            this.dx_ToolBar = new DevExpress.XtraBars.Bar();
-            this.dev_MainStatusBar = new DevExpress.XtraBars.Bar();
-            this.dev_MainMenuBar = new DevExpress.XtraBars.Bar();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.btn_AddSolution = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_LoadSolution = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_SaveSolution = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_SolutionSaveAs = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_RunOnce = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_ContinuousRun = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_Stop = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_CreateVar = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_HardwareCamera = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.btn_HardwareComm = new DevExpress.XtraBars.BarLargeButtonItem();
+            this.bar2 = new DevExpress.XtraBars.Bar();
             this.btn_Login = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_View = new DevExpress.XtraBars.BarSubItem();
-            this.btn_DefaultView = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_ShowTool = new DevExpress.XtraBars.BarCheckItem();
-            this.btn_HardwareCamera = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_System = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.btn_DefaultLayout = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_SaveLayout = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dev_MainDockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.dockPanel6 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel7 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel8 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel9 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel_PreConfig = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel_PreConfig_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanel_ToolBar = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel_ToolBar_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanel_Press = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel_Press_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanel_Display = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel_Display_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.panelContainer2 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel_Log = new DevExpress.XtraBars.Docking.DockPanel();
-            this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanel3 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel3_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanel4 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel4_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanel5 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel5_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanel_Log_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanel_HardwareState = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel_State_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.dev_MainBarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dev_MainDockManager)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
-            this.dockPanel1.SuspendLayout();
-            this.dockPanel2.SuspendLayout();
-            this.dockPanel3.SuspendLayout();
-            this.dockPanel4.SuspendLayout();
-            this.dockPanel5.SuspendLayout();
+            this.panelContainer1.SuspendLayout();
+            this.dockPanel_PreConfig.SuspendLayout();
+            this.dockPanel_ToolBar.SuspendLayout();
+            this.dockPanel_Press.SuspendLayout();
+            this.dockPanel_Display.SuspendLayout();
+            this.panelContainer2.SuspendLayout();
+            this.dockPanel_Log.SuspendLayout();
+            this.dockPanel_HardwareState.SuspendLayout();
             this.SuspendLayout();
             // 
             // dev_MainBarManager
             // 
             this.dev_MainBarManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.dx_ToolBar,
-            this.dev_MainStatusBar,
-            this.dev_MainMenuBar});
+            this.bar1,
+            this.bar2,
+            this.bar3});
             this.dev_MainBarManager.DockControls.Add(this.barDockControlTop);
             this.dev_MainBarManager.DockControls.Add(this.barDockControlBottom);
             this.dev_MainBarManager.DockControls.Add(this.barDockControlLeft);
@@ -94,141 +96,259 @@
             this.dev_MainBarManager.Form = this;
             this.dev_MainBarManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btn_Login,
-            this.btn_View,
-            this.btn_DefaultView,
-            this.btn_ShowTool,
-            this.btn_HardwareCamera});
-            this.dev_MainBarManager.MainMenu = this.dev_MainMenuBar;
-            this.dev_MainBarManager.MaxItemId = 18;
-            this.dev_MainBarManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckedComboBoxEdit1,
-            this.repositoryItemCheckEdit1,
-            this.repositoryItemCheckEdit2,
-            this.repositoryItemCheckEdit3,
-            this.repositoryItemCheckEdit4});
-            this.dev_MainBarManager.StatusBar = this.dev_MainStatusBar;
+            this.barSubItem1,
+            this.btn_DefaultLayout,
+            this.btn_SaveLayout,
+            this.btn_System,
+            this.barSubItem3,
+            this.btn_SaveSolution,
+            this.btn_AddSolution,
+            this.btn_LoadSolution,
+            this.btn_CreateVar,
+            this.btn_HardwareCamera,
+            this.btn_HardwareComm,
+            this.btn_SolutionSaveAs,
+            this.btn_RunOnce,
+            this.btn_ContinuousRun,
+            this.btn_Stop,
+            this.barStaticItem1});
+            this.dev_MainBarManager.MainMenu = this.bar2;
+            this.dev_MainBarManager.MaxItemId = 40;
+            this.dev_MainBarManager.StatusBar = this.bar3;
             // 
-            // dx_ToolBar
+            // bar1
             // 
-            this.dx_ToolBar.BarName = "工具";
-            this.dx_ToolBar.DockCol = 0;
-            this.dx_ToolBar.DockRow = 1;
-            this.dx_ToolBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.dx_ToolBar.OptionsBar.DrawBorder = false;
-            this.dx_ToolBar.Text = "工具";
+            this.bar1.BarName = "工具";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 1;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_AddSolution),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_LoadSolution),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_SaveSolution),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_SolutionSaveAs),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_RunOnce),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_ContinuousRun),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_Stop),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_CreateVar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_HardwareCamera),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_HardwareComm)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawBorder = false;
+            this.bar1.Text = "工具";
             // 
-            // dev_MainStatusBar
+            // btn_AddSolution
             // 
-            this.dev_MainStatusBar.BarName = "状态栏";
-            this.dev_MainStatusBar.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.dev_MainStatusBar.DockCol = 0;
-            this.dev_MainStatusBar.DockRow = 0;
-            this.dev_MainStatusBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.dev_MainStatusBar.OptionsBar.AllowQuickCustomization = false;
-            this.dev_MainStatusBar.OptionsBar.DrawBorder = false;
-            this.dev_MainStatusBar.OptionsBar.DrawDragBorder = false;
-            this.dev_MainStatusBar.OptionsBar.MultiLine = true;
-            this.dev_MainStatusBar.OptionsBar.UseWholeRow = true;
-            this.dev_MainStatusBar.Text = "主菜单";
+            this.btn_AddSolution.Caption = "新建方案";
+            this.btn_AddSolution.Id = 17;
+            this.btn_AddSolution.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_AddSolution.ImageOptions.SvgImage")));
+            this.btn_AddSolution.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
+            this.btn_AddSolution.Name = "btn_AddSolution";
+            this.btn_AddSolution.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // dev_MainMenuBar
+            // btn_LoadSolution
             // 
-            this.dev_MainMenuBar.BarName = "主菜单";
-            this.dev_MainMenuBar.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Top;
-            this.dev_MainMenuBar.DockCol = 0;
-            this.dev_MainMenuBar.DockRow = 0;
-            this.dev_MainMenuBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.dev_MainMenuBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_Login),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_View),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_HardwareCamera)});
-            this.dev_MainMenuBar.OptionsBar.AllowQuickCustomization = false;
-            this.dev_MainMenuBar.OptionsBar.DrawDragBorder = false;
-            this.dev_MainMenuBar.OptionsBar.MultiLine = true;
-            this.dev_MainMenuBar.OptionsBar.UseWholeRow = true;
-            this.dev_MainMenuBar.Text = "状态栏";
+            this.btn_LoadSolution.Caption = "加载方案";
+            this.btn_LoadSolution.Id = 18;
+            this.btn_LoadSolution.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_LoadSolution.ImageOptions.SvgImage")));
+            this.btn_LoadSolution.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
+            this.btn_LoadSolution.Name = "btn_LoadSolution";
             // 
-            // btn_Login
+            // btn_SaveSolution
             // 
-            this.btn_Login.Caption = "登录";
-            this.btn_Login.Id = 0;
-            this.btn_Login.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_Login.ImageOptions.SvgImage")));
-            this.btn_Login.Name = "btn_Login";
-            this.btn_Login.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipItem1.Text = "登录";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btn_Login.SuperTip = superToolTip1;
+            this.btn_SaveSolution.Caption = "保存方案";
+            this.btn_SaveSolution.Id = 16;
+            this.btn_SaveSolution.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_SaveSolution.ImageOptions.SvgImage")));
+            this.btn_SaveSolution.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
+            this.btn_SaveSolution.Name = "btn_SaveSolution";
+            this.btn_SaveSolution.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // btn_View
+            // btn_SolutionSaveAs
             // 
-            this.btn_View.Caption = "视图";
-            this.btn_View.Id = 5;
-            this.btn_View.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_DefaultView),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_ShowTool)});
-            this.btn_View.Name = "btn_View";
+            this.btn_SolutionSaveAs.Caption = "方案另存为";
+            this.btn_SolutionSaveAs.Id = 33;
+            this.btn_SolutionSaveAs.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_SolutionSaveAs.ImageOptions.SvgImage")));
+            this.btn_SolutionSaveAs.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
+            this.btn_SolutionSaveAs.Name = "btn_SolutionSaveAs";
+            this.btn_SolutionSaveAs.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // btn_DefaultView
+            // btn_RunOnce
             // 
-            this.btn_DefaultView.Caption = "默认视图";
-            this.btn_DefaultView.Id = 6;
-            this.btn_DefaultView.Name = "btn_DefaultView";
+            this.btn_RunOnce.Caption = "单次执行";
+            this.btn_RunOnce.Id = 35;
+            this.btn_RunOnce.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_RunOnce.ImageOptions.SvgImage")));
+            this.btn_RunOnce.ImageOptions.SvgImageSize = new System.Drawing.Size(32, 32);
+            this.btn_RunOnce.Name = "btn_RunOnce";
+            this.btn_RunOnce.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // btn_ShowTool
+            // btn_ContinuousRun
             // 
-            this.btn_ShowTool.Caption = "工具栏视图";
-            this.btn_ShowTool.Id = 14;
-            this.btn_ShowTool.Name = "btn_ShowTool";
+            this.btn_ContinuousRun.Caption = "循环执行";
+            this.btn_ContinuousRun.Id = 37;
+            this.btn_ContinuousRun.ImageOptions.SvgImage = global::UniVision.Properties.Resources.循环;
+            this.btn_ContinuousRun.ImageOptions.SvgImageSize = new System.Drawing.Size(32, 32);
+            this.btn_ContinuousRun.Name = "btn_ContinuousRun";
+            // 
+            // btn_Stop
+            // 
+            this.btn_Stop.Caption = "停止";
+            this.btn_Stop.Id = 38;
+            this.btn_Stop.ImageOptions.SvgImage = global::UniVision.Properties.Resources.Stop_Red;
+            this.btn_Stop.ItemInMenuAppearance.Disabled.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Stop.ItemInMenuAppearance.Disabled.Options.UseBackColor = true;
+            this.btn_Stop.Name = "btn_Stop";
+            this.btn_Stop.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // btn_CreateVar
+            // 
+            this.btn_CreateVar.Caption = "全局变量";
+            this.btn_CreateVar.Id = 29;
+            this.btn_CreateVar.ImageOptions.SvgImage = global::UniVision.Properties.Resources.查看变量;
+            this.btn_CreateVar.Name = "btn_CreateVar";
+            this.btn_CreateVar.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // btn_HardwareCamera
             // 
-            this.btn_HardwareCamera.Caption = "相机模块";
-            this.btn_HardwareCamera.Id = 17;
+            this.btn_HardwareCamera.Caption = "相机配置";
+            this.btn_HardwareCamera.Id = 30;
+            this.btn_HardwareCamera.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_HardwareCamera.ImageOptions.SvgImage")));
+            this.btn_HardwareCamera.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
             this.btn_HardwareCamera.Name = "btn_HardwareCamera";
+            this.btn_HardwareCamera.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btn_HardwareCamera.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_HardwareCamera_ItemClick);
+            // 
+            // btn_HardwareComm
+            // 
+            this.btn_HardwareComm.Caption = "通讯配置";
+            this.btn_HardwareComm.Id = 31;
+            this.btn_HardwareComm.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_HardwareComm.ImageOptions.SvgImage")));
+            this.btn_HardwareComm.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
+            this.btn_HardwareComm.Name = "btn_HardwareComm";
+            this.btn_HardwareComm.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "主菜单";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_Login),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_System),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3)});
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
+            this.bar2.OptionsBar.DrawBorder = false;
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "主菜单";
+            // 
+            // btn_Login
+            // 
+            this.btn_Login.Caption = "登录(L)";
+            this.btn_Login.Id = 5;
+            this.btn_Login.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_Login.ImageOptions.SvgImage")));
+            this.btn_Login.Name = "btn_Login";
+            this.btn_Login.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // btn_System
+            // 
+            this.btn_System.Caption = "系统(S)";
+            this.btn_System.Id = 12;
+            this.btn_System.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_System.ImageOptions.SvgImage")));
+            this.btn_System.Name = "btn_System";
+            this.btn_System.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "视图(V)";
+            this.barSubItem1.Id = 7;
+            this.barSubItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_DefaultLayout),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_SaveLayout)});
+            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // btn_DefaultLayout
+            // 
+            this.btn_DefaultLayout.Caption = "默认布局";
+            this.btn_DefaultLayout.Id = 8;
+            this.btn_DefaultLayout.Name = "btn_DefaultLayout";
+            this.btn_DefaultLayout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_DefaultLayout_ItemClick);
+            // 
+            // btn_SaveLayout
+            // 
+            this.btn_SaveLayout.Caption = "保存布局";
+            this.btn_SaveLayout.Id = 9;
+            this.btn_SaveLayout.Name = "btn_SaveLayout";
+            this.btn_SaveLayout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SaveLayout_ItemClick);
+            // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "帮助(Help)";
+            this.barSubItem3.Id = 13;
+            this.barSubItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem3.ImageOptions.SvgImage")));
+            this.barSubItem3.Name = "barSubItem3";
+            this.barSubItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "状态栏";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1)});
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "状态栏";
             // 
             // barDockControlTop
             // 
+            this.barDockControlTop.Appearance.BackColor = System.Drawing.Color.SlateBlue;
+            this.barDockControlTop.Appearance.Options.UseBackColor = true;
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.dev_MainBarManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(1327, 55);
+            this.barDockControlTop.Size = new System.Drawing.Size(1327, 118);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 885);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 547);
             this.barDockControlBottom.Manager = this.dev_MainBarManager;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1327, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1327, 33);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 55);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 118);
             this.barDockControlLeft.Manager = this.dev_MainBarManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 830);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 429);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1327, 55);
+            this.barDockControlRight.Location = new System.Drawing.Point(1327, 118);
             this.barDockControlRight.Manager = this.dev_MainBarManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 830);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 429);
             // 
             // dev_MainDockManager
             // 
             this.dev_MainDockManager.Form = this;
             this.dev_MainDockManager.MenuManager = this.dev_MainBarManager;
             this.dev_MainDockManager.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanel6,
-            this.dockPanel7,
-            this.dockPanel8,
-            this.dockPanel9,
-            this.dockPanel_Log});
+            this.panelContainer1,
+            this.dockPanel_Press,
+            this.dockPanel_Display,
+            this.panelContainer2});
             this.dev_MainDockManager.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -243,207 +363,181 @@
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
             "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
             // 
-            // dockPanel6
+            // panelContainer1
             // 
-            this.dockPanel6.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel6.ID = new System.Guid("62a04ff1-d691-43b1-a2bc-8b4683ed0b1a");
-            this.dockPanel6.Location = new System.Drawing.Point(0, 55);
-            this.dockPanel6.Name = "dockPanel6";
-            this.dockPanel6.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel6.Size = new System.Drawing.Size(200, 830);
-            this.dockPanel6.Text = "工具栏";
+            this.panelContainer1.Controls.Add(this.dockPanel_PreConfig);
+            this.panelContainer1.Controls.Add(this.dockPanel_ToolBar);
+            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.panelContainer1.ID = new System.Guid("32b62a6b-e699-493f-a4f9-d3f8103c9602");
+            this.panelContainer1.Location = new System.Drawing.Point(0, 118);
+            this.panelContainer1.Name = "panelContainer1";
+            this.panelContainer1.OriginalSize = new System.Drawing.Size(286, 200);
+            this.panelContainer1.Size = new System.Drawing.Size(286, 429);
+            this.panelContainer1.Text = "panelContainer1";
             // 
-            // dockPanel7
+            // dockPanel_PreConfig
             // 
-            this.dockPanel7.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel7.ID = new System.Guid("721b19ba-e49d-401d-8aa4-512545f36408");
-            this.dockPanel7.Location = new System.Drawing.Point(200, 55);
-            this.dockPanel7.Name = "dockPanel7";
-            this.dockPanel7.OriginalSize = new System.Drawing.Size(264, 200);
-            this.dockPanel7.Size = new System.Drawing.Size(264, 830);
-            this.dockPanel7.Text = "流程栏";
+            this.dockPanel_PreConfig.Controls.Add(this.dockPanel_PreConfig_Container);
+            this.dockPanel_PreConfig.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanel_PreConfig.ID = new System.Guid("21e68503-0aea-4969-8018-3815e62bf299");
+            this.dockPanel_PreConfig.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel_PreConfig.Name = "dockPanel_PreConfig";
+            this.dockPanel_PreConfig.OriginalSize = new System.Drawing.Size(286, 180);
+            this.dockPanel_PreConfig.Size = new System.Drawing.Size(286, 175);
+            this.dockPanel_PreConfig.Text = "流程配置";
             // 
-            // dockPanel8
+            // dockPanel_PreConfig_Container
             // 
-            this.dockPanel8.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
-            this.dockPanel8.FloatVertical = true;
-            this.dockPanel8.ID = new System.Guid("fb5b1396-3ac9-4820-93f2-1ccd7a5708a0");
-            this.dockPanel8.Location = new System.Drawing.Point(464, 55);
-            this.dockPanel8.Name = "dockPanel8";
-            this.dockPanel8.OriginalSize = new System.Drawing.Size(200, 748);
-            this.dockPanel8.Size = new System.Drawing.Size(863, 748);
-            this.dockPanel8.Text = "显示";
+            this.dockPanel_PreConfig_Container.Location = new System.Drawing.Point(4, 38);
+            this.dockPanel_PreConfig_Container.Name = "dockPanel_PreConfig_Container";
+            this.dockPanel_PreConfig_Container.Size = new System.Drawing.Size(275, 130);
+            this.dockPanel_PreConfig_Container.TabIndex = 0;
             // 
-            // dockPanel9
+            // dockPanel_ToolBar
             // 
-            this.dockPanel9.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.dockPanel9.ID = new System.Guid("3055d933-9df8-462b-b59b-bc49bb673561");
-            this.dockPanel9.Location = new System.Drawing.Point(1001, 803);
-            this.dockPanel9.Name = "dockPanel9";
-            this.dockPanel9.OriginalSize = new System.Drawing.Size(326, 200);
-            this.dockPanel9.Size = new System.Drawing.Size(326, 82);
-            this.dockPanel9.Text = "硬件状态";
+            this.dockPanel_ToolBar.Controls.Add(this.dockPanel_ToolBar_Container);
+            this.dockPanel_ToolBar.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanel_ToolBar.ID = new System.Guid("2a363170-7f8d-4f46-ba15-d33731395098");
+            this.dockPanel_ToolBar.Location = new System.Drawing.Point(0, 175);
+            this.dockPanel_ToolBar.Name = "dockPanel_ToolBar";
+            this.dockPanel_ToolBar.OriginalSize = new System.Drawing.Size(286, 262);
+            this.dockPanel_ToolBar.Size = new System.Drawing.Size(286, 254);
+            this.dockPanel_ToolBar.Text = "工具栏";
+            // 
+            // dockPanel_ToolBar_Container
+            // 
+            this.dockPanel_ToolBar_Container.Location = new System.Drawing.Point(4, 38);
+            this.dockPanel_ToolBar_Container.Name = "dockPanel_ToolBar_Container";
+            this.dockPanel_ToolBar_Container.Size = new System.Drawing.Size(275, 212);
+            this.dockPanel_ToolBar_Container.TabIndex = 0;
+            // 
+            // dockPanel_Press
+            // 
+            this.dockPanel_Press.Controls.Add(this.dockPanel_Press_Container);
+            this.dockPanel_Press.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.dockPanel_Press.ID = new System.Guid("91d9be1f-fc87-4ae7-928f-5d2c2c5945b7");
+            this.dockPanel_Press.Location = new System.Drawing.Point(286, 118);
+            this.dockPanel_Press.Name = "dockPanel_Press";
+            this.dockPanel_Press.OriginalSize = new System.Drawing.Size(262, 200);
+            this.dockPanel_Press.Size = new System.Drawing.Size(262, 429);
+            this.dockPanel_Press.Text = "流程栏";
+            // 
+            // dockPanel_Press_Container
+            // 
+            this.dockPanel_Press_Container.Location = new System.Drawing.Point(4, 38);
+            this.dockPanel_Press_Container.Name = "dockPanel_Press_Container";
+            this.dockPanel_Press_Container.Size = new System.Drawing.Size(251, 387);
+            this.dockPanel_Press_Container.TabIndex = 0;
+            // 
+            // dockPanel_Display
+            // 
+            this.dockPanel_Display.Controls.Add(this.dockPanel_Display_Container);
+            this.dockPanel_Display.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
+            this.dockPanel_Display.FloatVertical = true;
+            this.dockPanel_Display.ID = new System.Guid("a70686f3-b22e-4226-b271-2796164acc5a");
+            this.dockPanel_Display.Location = new System.Drawing.Point(548, 118);
+            this.dockPanel_Display.Name = "dockPanel_Display";
+            this.dockPanel_Display.OriginalSize = new System.Drawing.Size(200, 344);
+            this.dockPanel_Display.Size = new System.Drawing.Size(779, 344);
+            this.dockPanel_Display.Text = "显示";
+            // 
+            // dockPanel_Display_Container
+            // 
+            this.dockPanel_Display_Container.Location = new System.Drawing.Point(4, 38);
+            this.dockPanel_Display_Container.Name = "dockPanel_Display_Container";
+            this.dockPanel_Display_Container.Size = new System.Drawing.Size(771, 299);
+            this.dockPanel_Display_Container.TabIndex = 0;
+            // 
+            // panelContainer2
+            // 
+            this.panelContainer2.ChildPanelOrientation = DevExpress.XtraBars.Docking.LayoutOrientation.Horizontal;
+            this.panelContainer2.Controls.Add(this.dockPanel_Log);
+            this.panelContainer2.Controls.Add(this.dockPanel_HardwareState);
+            this.panelContainer2.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.panelContainer2.FloatVertical = true;
+            this.panelContainer2.ID = new System.Guid("ccc77060-0038-4d2c-9d6a-33ca44983355");
+            this.panelContainer2.Location = new System.Drawing.Point(548, 462);
+            this.panelContainer2.Name = "panelContainer2";
+            this.panelContainer2.OriginalSize = new System.Drawing.Size(1570, 200);
+            this.panelContainer2.Size = new System.Drawing.Size(779, 85);
+            this.panelContainer2.Text = "panelContainer2";
             // 
             // dockPanel_Log
             // 
+            this.dockPanel_Log.Controls.Add(this.dockPanel_Log_Container);
             this.dockPanel_Log.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.dockPanel_Log.FloatVertical = true;
-            this.dockPanel_Log.ID = new System.Guid("a8f203f8-ceee-43f0-94dc-333a9064d704");
-            this.dockPanel_Log.Location = new System.Drawing.Point(464, 803);
+            this.dockPanel_Log.ID = new System.Guid("e48cb829-bc0c-4ef7-9f15-1da4ac7fce49");
+            this.dockPanel_Log.Location = new System.Drawing.Point(0, 0);
             this.dockPanel_Log.Name = "dockPanel_Log";
-            this.dockPanel_Log.OriginalSize = new System.Drawing.Size(1328, 200);
-            this.dockPanel_Log.Size = new System.Drawing.Size(537, 82);
-            this.dockPanel_Log.Text = "信息栏";
+            this.dockPanel_Log.OriginalSize = new System.Drawing.Size(648, 98);
+            this.dockPanel_Log.Size = new System.Drawing.Size(648, 85);
+            this.dockPanel_Log.Text = "日志栏";
             // 
-            // repositoryItemCheckedComboBoxEdit1
+            // dockPanel_Log_Container
             // 
-            this.repositoryItemCheckedComboBoxEdit1.AutoHeight = false;
-            this.repositoryItemCheckedComboBoxEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCheckedComboBoxEdit1.Name = "repositoryItemCheckedComboBoxEdit1";
+            this.dockPanel_Log_Container.Location = new System.Drawing.Point(4, 38);
+            this.dockPanel_Log_Container.Name = "dockPanel_Log_Container";
+            this.dockPanel_Log_Container.Size = new System.Drawing.Size(637, 43);
+            this.dockPanel_Log_Container.TabIndex = 0;
             // 
-            // repositoryItemCheckEdit1
+            // dockPanel_HardwareState
             // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.dockPanel_HardwareState.Controls.Add(this.dockPanel_State_Container);
+            this.dockPanel_HardwareState.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanel_HardwareState.ID = new System.Guid("ce17dcae-4613-462a-8655-761e302ed488");
+            this.dockPanel_HardwareState.Location = new System.Drawing.Point(648, 0);
+            this.dockPanel_HardwareState.Name = "dockPanel_HardwareState";
+            this.dockPanel_HardwareState.OriginalSize = new System.Drawing.Size(131, 98);
+            this.dockPanel_HardwareState.Size = new System.Drawing.Size(131, 85);
+            this.dockPanel_HardwareState.Text = "硬件状态栏";
             // 
-            // repositoryItemCheckEdit2
+            // dockPanel_State_Container
             // 
-            this.repositoryItemCheckEdit2.AutoHeight = false;
-            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            this.dockPanel_State_Container.Location = new System.Drawing.Point(4, 38);
+            this.dockPanel_State_Container.Name = "dockPanel_State_Container";
+            this.dockPanel_State_Container.Size = new System.Drawing.Size(123, 43);
+            this.dockPanel_State_Container.TabIndex = 0;
             // 
-            // repositoryItemCheckEdit3
+            // barStaticItem1
             // 
-            this.repositoryItemCheckEdit3.AutoHeight = false;
-            this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
-            // 
-            // repositoryItemCheckEdit4
-            // 
-            this.repositoryItemCheckEdit4.AutoHeight = false;
-            this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
-            // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel1.ID = new System.Guid("982d2e33-8c9b-4811-bbe9-8e5ec489d2c9");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 55);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 748);
-            this.dockPanel1.Text = "dockPanel1";
-            // 
-            // dockPanel1_Container
-            // 
-            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 38);
-            this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(189, 706);
-            this.dockPanel1_Container.TabIndex = 0;
-            // 
-            // dockPanel2
-            // 
-            this.dockPanel2.Controls.Add(this.dockPanel2_Container);
-            this.dockPanel2.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel2.ID = new System.Guid("be7fd746-a182-4eb1-9329-c9cd9a3e64cd");
-            this.dockPanel2.Location = new System.Drawing.Point(200, 55);
-            this.dockPanel2.Name = "dockPanel2";
-            this.dockPanel2.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel2.Size = new System.Drawing.Size(200, 748);
-            this.dockPanel2.Text = "dockPanel2";
-            // 
-            // dockPanel2_Container
-            // 
-            this.dockPanel2_Container.Location = new System.Drawing.Point(4, 38);
-            this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(189, 706);
-            this.dockPanel2_Container.TabIndex = 0;
-            // 
-            // dockPanel3
-            // 
-            this.dockPanel3.Controls.Add(this.dockPanel3_Container);
-            this.dockPanel3.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel3.ID = new System.Guid("b4fe882b-ece4-4a72-bbe1-c2892fbad5fd");
-            this.dockPanel3.Location = new System.Drawing.Point(400, 55);
-            this.dockPanel3.Name = "dockPanel3";
-            this.dockPanel3.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel3.Size = new System.Drawing.Size(200, 748);
-            this.dockPanel3.Text = "dockPanel3";
-            // 
-            // dockPanel3_Container
-            // 
-            this.dockPanel3_Container.Location = new System.Drawing.Point(4, 38);
-            this.dockPanel3_Container.Name = "dockPanel3_Container";
-            this.dockPanel3_Container.Size = new System.Drawing.Size(189, 706);
-            this.dockPanel3_Container.TabIndex = 0;
-            // 
-            // dockPanel4
-            // 
-            this.dockPanel4.Controls.Add(this.dockPanel4_Container);
-            this.dockPanel4.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel4.ID = new System.Guid("d9363b6f-7add-43ac-97cc-f9727fbb313c");
-            this.dockPanel4.Location = new System.Drawing.Point(600, 55);
-            this.dockPanel4.Name = "dockPanel4";
-            this.dockPanel4.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel4.Size = new System.Drawing.Size(200, 748);
-            this.dockPanel4.Text = "dockPanel4";
-            // 
-            // dockPanel4_Container
-            // 
-            this.dockPanel4_Container.Location = new System.Drawing.Point(4, 38);
-            this.dockPanel4_Container.Name = "dockPanel4_Container";
-            this.dockPanel4_Container.Size = new System.Drawing.Size(189, 706);
-            this.dockPanel4_Container.TabIndex = 0;
-            // 
-            // dockPanel5
-            // 
-            this.dockPanel5.Controls.Add(this.dockPanel5_Container);
-            this.dockPanel5.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel5.ID = new System.Guid("21088ebf-93b0-4323-9448-bc8f0e068fa7");
-            this.dockPanel5.Location = new System.Drawing.Point(800, 55);
-            this.dockPanel5.Name = "dockPanel5";
-            this.dockPanel5.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel5.Size = new System.Drawing.Size(200, 748);
-            this.dockPanel5.Text = "dockPanel5";
-            // 
-            // dockPanel5_Container
-            // 
-            this.dockPanel5_Container.Location = new System.Drawing.Point(4, 38);
-            this.dockPanel5_Container.Name = "dockPanel5_Container";
-            this.dockPanel5_Container.Size = new System.Drawing.Size(189, 706);
-            this.dockPanel5_Container.TabIndex = 0;
+            this.barStaticItem1.Caption = "barStaticItem1";
+            this.barStaticItem1.Id = 39;
+            this.barStaticItem1.Name = "barStaticItem1";
             // 
             // Frm_Main
             // 
+            this.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1327, 905);
-            this.Controls.Add(this.dockPanel_Log);
-            this.Controls.Add(this.dockPanel9);
-            this.Controls.Add(this.dockPanel8);
-            this.Controls.Add(this.dockPanel7);
-            this.Controls.Add(this.dockPanel6);
+            this.ClientSize = new System.Drawing.Size(1327, 580);
+            this.Controls.Add(this.panelContainer2);
+            this.Controls.Add(this.dockPanel_Display);
+            this.Controls.Add(this.dockPanel_Press);
+            this.Controls.Add(this.panelContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Name = "Frm_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_Main_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frm_Main_FormClosed);
             this.Load += new System.EventHandler(this.Frm_Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dev_MainBarManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dev_MainDockManager)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
-            this.dockPanel1.ResumeLayout(false);
-            this.dockPanel2.ResumeLayout(false);
-            this.dockPanel3.ResumeLayout(false);
-            this.dockPanel4.ResumeLayout(false);
-            this.dockPanel5.ResumeLayout(false);
+            this.panelContainer1.ResumeLayout(false);
+            this.dockPanel_PreConfig.ResumeLayout(false);
+            this.dockPanel_ToolBar.ResumeLayout(false);
+            this.dockPanel_Press.ResumeLayout(false);
+            this.dockPanel_Display.ResumeLayout(false);
+            this.panelContainer2.ResumeLayout(false);
+            this.dockPanel_Log.ResumeLayout(false);
+            this.dockPanel_HardwareState.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,39 +546,44 @@
         #endregion
 
         private DevExpress.XtraBars.BarManager dev_MainBarManager;
-        private DevExpress.XtraBars.Bar dx_ToolBar;
-        private DevExpress.XtraBars.Bar dev_MainStatusBar;
-        private DevExpress.XtraBars.Bar dev_MainMenuBar;
-        private DevExpress.XtraBars.BarButtonItem btn_Login;
-        private DevExpress.XtraBars.BarSubItem btn_View;
-        private DevExpress.XtraBars.BarButtonItem btn_DefaultView;
-        private DevExpress.XtraBars.BarCheckItem btn_ShowTool;
-        private DevExpress.XtraBars.BarButtonItem btn_HardwareCamera;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
         private DevExpress.XtraBars.Docking.DockManager dev_MainDockManager;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel_Log;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel9;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel8;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel7;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel6;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel2;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel3;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel3_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel4;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel4_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel5;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel5_Container;
-        
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel_Log_Container;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel_Display;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel_Display_Container;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel_Press;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel_Press_Container;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel_HardwareState;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel_State_Container;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer1;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel_PreConfig;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel_PreConfig_Container;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel_ToolBar;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel_ToolBar_Container;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer2;
+        private DevExpress.XtraBars.BarButtonItem btn_Login;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem btn_DefaultLayout;
+        private DevExpress.XtraBars.BarButtonItem btn_SaveLayout;
+        private DevExpress.XtraBars.BarSubItem btn_System;
+        private DevExpress.XtraBars.BarSubItem barSubItem3;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_SaveSolution;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_AddSolution;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_LoadSolution;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_CreateVar;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_HardwareCamera;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_HardwareComm;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_SolutionSaveAs;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_RunOnce;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_ContinuousRun;
+        private DevExpress.XtraBars.BarLargeButtonItem btn_Stop;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
     }
 }

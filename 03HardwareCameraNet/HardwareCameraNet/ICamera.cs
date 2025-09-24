@@ -16,7 +16,7 @@ public interface ICamera
     /// <summary>
     /// 掉线事件,掉线时触发，true 表示掉线，false表示恢复
     /// </summary>
-    event EventHandler<object> DisConnetEvent;
+    event EventHandler<bool> DisConnetEvent;
 
     #region 属性
     /// <summary>

@@ -215,7 +215,7 @@
             // 
             // btn_Info
             // 
-            this.btn_Info.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Info.Appearance.BackColor = System.Drawing.SystemColors.GrayText;
             this.btn_Info.Appearance.ForeColor = System.Drawing.Color.White;
             this.btn_Info.Appearance.Options.UseBackColor = true;
             this.btn_Info.Appearance.Options.UseForeColor = true;

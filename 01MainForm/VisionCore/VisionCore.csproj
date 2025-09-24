@@ -34,6 +34,9 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AntdUI, Version=2.1.6.0, Culture=neutral, PublicKeyToken=0e24e5118ea3d6af, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AntdUI.2.1.6\lib\net48\AntdUI.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.Desktop.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Drawing.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -49,6 +52,7 @@
     <Reference Include="DevExpress.XtraTreeMap.v24.2.UI, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -59,17 +63,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frm\Toolbar.cs">
+    <Compile Include="Frm_HardwareState\Frm_HardwareState.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Frm\Toolbar.Designer.cs">
-      <DependentUpon>Toolbar.cs</DependentUpon>
+    <Compile Include="Frm_HardwareState\Frm_HardwareState.Designer.cs">
+      <DependentUpon>Frm_HardwareState.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Solution\TreeToolBar.cs">
+    <Compile Include="Frm_HardwareState\StateItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Frm_HardwareState\StateItem.Designer.cs">
+      <DependentUpon>StateItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_ToolBar\Frm_ToolBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Frm_Solution\TreeToolBar.Designer.cs">
-      <DependentUpon>TreeToolBar.cs</DependentUpon>
+    <Compile Include="Frm_ToolBar\Frm_ToolBar.Designer.cs">
+      <DependentUpon>Frm_ToolBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager\CameraManager\CameraConfig.cs" />
     <Compile Include="Manager\CameraManager\CameraManager.cs" />
@@ -87,16 +97,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Solution\SolutionManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Hepler\" />
+    <Folder Include="Frm_Solution\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Frm\Toolbar.resx">
-      <DependentUpon>Toolbar.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_HardwareState\Frm_HardwareState.resx">
+      <DependentUpon>Frm_HardwareState.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Solution\TreeToolBar.resx">
-      <DependentUpon>TreeToolBar.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_HardwareState\StateItem.resx">
+      <DependentUpon>StateItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ToolBar\Frm_ToolBar.resx">
+      <DependentUpon>Frm_ToolBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PluginBase\Frm_ToolBase.resx">
       <DependentUpon>Frm_ToolBase.cs</DependentUpon>
@@ -116,6 +130,9 @@
       <Project>{21c53db6-0f97-41fd-b939-fb37ad9fa8bf}</Project>
       <Name>Logger</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,6 +34,7 @@ public static class LogHelper
     public static void Warn(string content)
     {
         logger.Warn(content);
+        Cache(LogLevel.Warn, content);
     }
 
     /// <summary>
@@ -51,6 +52,7 @@ public static class LogHelper
         {
             logger.Error(ex, content);
         }
+        Cache(LogLevel.Error, $"[{content}],{ex}");
     }
 
     /// <summary>

@@ -44,7 +44,7 @@ public class IRAYPLECamera : IDevice2D
         add => frameGrabedEvent += value;
         remove => frameGrabedEvent -= value;
     }
-    public event EventHandler<object> DisConnetEvent;
+    public event EventHandler<bool> DisConnetEvent;
     
     public string SN { get; }
     public bool IsConnected => device.IMV_IsOpen();

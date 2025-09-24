@@ -207,7 +207,7 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
         }
     }
 
-    private void DisConnectEvent(object sender, object disconnect)
+    private void DisConnectEvent(object sender, bool disconnect)
     {
         Invoke(() =>
         {
