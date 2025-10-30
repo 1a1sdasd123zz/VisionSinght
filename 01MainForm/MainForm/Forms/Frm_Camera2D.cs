@@ -2,10 +2,9 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Cognex.VisionPro;
 using HardwareCameraNet;
 using VisionCore.Manager.CameraManager;
-using VisionCore.Manager.PluginManager;
+using VisionCore.Manager.PluginServer;
 
 namespace UniVision.Forms;
 
@@ -18,6 +17,8 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
     public Frm_Camera2D()
     {
         InitializeComponent();
+        // 表单显示后再初始化显示控件，避免首开阻塞
+        //Shown += Frm_Camera2D_Shown;
     }
     private void Frm_Camera2D_Load(object sender, EventArgs e)
     {
@@ -27,6 +28,8 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
 
         SetControlState();
     }
+
+
 
     private void DgvUpdate()
     {
@@ -96,6 +99,7 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
                 txt_Gain.EditValue = currentSelectedCamera.Parameters.Gain;
                 txt_MaxExposure.Text = currentSelectedCamera.Parameters.MaxExposureTime.ToString("F5");
                 txt_MaxGain.Text = currentSelectedCamera.Parameters.MaxGain.ToString("F5");
+                cmb_TriggerSource.Properties.Items.Clear();
                 cmb_TriggerSource.Properties.Items.AddRange(currentSelectedCamera.Parameters.TriggerSoures);
             }
             else
@@ -189,21 +193,22 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
 
     private void UpdateUIImage(object sender, object img)
     {
-        lock (this)
+        var dispatcher = pictureEdit_Display ?? (Control)this;
+        if (dispatcher.InvokeRequired)
         {
-            if (user_ShowDisplay.InvokeRequired)
+            dispatcher.BeginInvoke(new Action<object, object>(UpdateUIImage), sender, img);
+            return;
+        }
+        try
+        {
+            if (img is Bitmap bmp)
             {
-                user_ShowDisplay.BeginInvoke(
-                    new Action<object, object>(UpdateUIImage),
-                    sender,  // 传递事件源
-                    img      // 传递图像参数
-                );
+                pictureEdit_Display.Image = bmp;
             }
-            else
-            {
-                var bmp = (Bitmap)img;
-                user_ShowDisplay.Image = bmp.PixelFormat == System.Drawing.Imaging.PixelFormat.Format24bppRgb ? new CogImage24PlanarColor(bmp) : new CogImage8Grey(bmp);
-            }
+        }
+        catch (Exception)
+        {
+            // ignored
         }
     }
 
@@ -213,7 +218,7 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
         {
             if (cmb_SnList.SelectedText == ((ICamera)sender).SN)
             {
-                SetControlState(!(bool)disconnect);
+                SetControlState(!disconnect);
             }
         });
 
@@ -308,7 +313,7 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
             if (fullName != null)
                 CameraManager.Instance.AddOrUpdateCameraConfig(
                     new CameraConfig(selectedSerial, selectedManufacturer,
-                        CameraPluginManager.Instance.GetPluginInfo(fullName))
+                        CameraPluginServer.Instance.GetPluginInfo(fullName))
                     {
                         Expain = expain
                     });
@@ -331,14 +336,14 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
 
         // 获取选中行
         var row = dgv_CameraConfig.SelectedRows[0];
-        var sn = row.Cells["col_Sn"].Value?.ToString();
+        var sn = row.Cells["col_SerialNumber"].Value?.ToString();
 
         if (string.IsNullOrEmpty(sn))
         {
             MessageBox.Show("选中的行序列号无效！");
             return;
         }
-        if(DialogResult.Yes != MessageBox.Show("请先选择要移除的相机配置行！","",MessageBoxButtons.YesNoCancel))return;
+        if(DialogResult.Yes != MessageBox.Show("是否移除相机配置！","",MessageBoxButtons.YesNoCancel))return;
         // 调用CameraManager移除配置
         if (CameraManager.Instance.RemoveCameraConfig(sn))
         {
@@ -398,8 +403,11 @@ public partial class Frm_Camera2D : DevExpress.XtraEditors.XtraForm
     private void chk_HardTrigger_CheckedChanged(object sender, EventArgs e)
     {
         cmb_TriggerSource.Visible = chk_HardTrigger.Checked;
-        if (chk_HardTrigger.Checked)
-            cmb_TriggerSource.SelectedItem = currentSelectedCamera.Parameters.TriggerSoures;
+        if (chk_HardTrigger.Checked && currentSelectedCamera != null)
+        {
+            // 选中当前触发源字符串
+            cmb_TriggerSource.SelectedItem = currentSelectedCamera.Parameters.TriggerSoure;
+        }
     }
     protected override void Dispose(bool disposing)
     {

@@ -104,14 +104,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="App.config" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -120,6 +115,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -141,13 +141,40 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\循环.svg" />
+    <EmbeddedResource Include="Resources\查看变量.svg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Stop_Red.svg" />
+    <EmbeddedResource Include="Resources\停止执行.svg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\查看变量.svg" />
+    <EmbeddedResource Include="Resources\循环.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\执行.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ActionCenterNotificationMirrored.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\用户.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\方案列表.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\用户注册.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\用户权限.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search1.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

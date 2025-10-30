@@ -45,6 +45,7 @@
     <Reference Include="DevExpress.Utils.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -75,19 +76,67 @@
     <Compile Include="Frm_HardwareState\StateItem.Designer.cs">
       <DependentUpon>StateItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_ToolBar\Frm_ToolBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Frm_ToolBar\Frm_ToolBar.Designer.cs">
-      <DependentUpon>Frm_ToolBar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manager\CameraManager\CameraConfig.cs" />
-    <Compile Include="Manager\CameraManager\CameraManager.cs" />
-    <Compile Include="Manager\PluginManager\CameraPluginManager.cs" />
-    <Compile Include="PluginBase\Frm_ToolBase.cs">
+    <Compile Include="GlobalValue\Frm_GlobalVar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PluginBase\Frm_ToolBase.Designer.cs">
+    <Compile Include="GlobalValue\Frm_GlobalVar.Designer.cs">
+      <DependentUpon>Frm_GlobalVar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_LinkValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_LinkValue.Designer.cs">
+      <DependentUpon>Frm_LinkValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_ProcessBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_ProcessBar.Designer.cs">
+      <DependentUpon>Frm_ProcessBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_ProcessConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_ProcessConfig.Designer.cs">
+      <DependentUpon>Frm_ProcessConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_SolutionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_SolutionList.Designer.cs">
+      <DependentUpon>Frm_SolutionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_ToolBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Frm_Solution\Frm_ToolBar.Designer.cs">
+      <DependentUpon>Frm_ToolBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Solution\Rendering\DefaultToolItemRenderer.cs" />
+    <Compile Include="Frm_Solution\Rendering\IToolItemRenderer.cs" />
+    <Compile Include="Frm_Solution\Rendering\ToolItemRenderContext.cs" />
+    <Compile Include="Frm_Solution\ToolItem.cs" />
+    <Compile Include="Linking\BasicConverters.cs" />
+    <Compile Include="Linking\ILinkValueConverter.cs" />
+    <Compile Include="Linking\LinkableVarAttribute.cs" />
+    <Compile Include="Linking\LinkBinding.cs" />
+    <Compile Include="Linking\LinkManager.cs" />
+    <Compile Include="Linking\LinkRegistry.cs" />
+    <Compile Include="Linking\ToolLinkContext.cs" />
+    <Compile Include="Linking\VariableDescriptor.cs" />
+    <Compile Include="Manager\CameraManager\CameraConfig.cs" />
+    <Compile Include="Manager\CameraManager\CameraManager.cs" />
+    <Compile Include="Manager\PluginServer\CameraPluginServer.cs" />
+    <Compile Include="Manager\PluginServer\PluginToolServer.cs" />
+    <Compile Include="PluginBase\ToolDragData.cs" />
+    <Compile Include="PluginBase\ToolMetadata.cs" />
+    <Compile Include="Runtime\ProcessExecutionService.cs" />
+    <Compile Include="Solution\SolutionInfo.cs" />
+    <Compile Include="Solution\SolutionManager.cs" />
+    <Compile Include="ToolBase\Frm_ToolBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolBase\Frm_ToolBase.Designer.cs">
       <DependentUpon>Frm_ToolBase.cs</DependentUpon>
     </Compile>
     <Compile Include="PluginBase\PluginInfo.cs" />
@@ -97,10 +146,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Solution\SolutionManager.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Frm_Solution\" />
+    <Compile Include="Solution\Solution.cs" />
+    <Compile Include="ToolBase\IPersistableTool.cs" />
+    <Compile Include="ToolBase\ITool.cs" />
+    <Compile Include="ToolBase\ToolBase.cs" />
+    <Compile Include="ToolBase\ToolMetadata.cs" />
+    <Compile Include="UserControls\ShowDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ShowDisplay.Designer.cs">
+      <DependentUpon>ShowDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uLink.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uLink.Designer.cs">
+      <DependentUpon>uLink.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Frm_HardwareState\Frm_HardwareState.resx">
@@ -109,16 +171,37 @@
     <EmbeddedResource Include="Frm_HardwareState\StateItem.resx">
       <DependentUpon>StateItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ToolBar\Frm_ToolBar.resx">
+    <EmbeddedResource Include="GlobalValue\Frm_GlobalVar.resx">
+      <DependentUpon>Frm_GlobalVar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Solution\Frm_LinkValue.resx">
+      <DependentUpon>Frm_LinkValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Solution\Frm_ProcessBar.resx">
+      <DependentUpon>Frm_ProcessBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Solution\Frm_ProcessConfig.resx">
+      <DependentUpon>Frm_ProcessConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Solution\Frm_SolutionList.resx">
+      <DependentUpon>Frm_SolutionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Solution\Frm_ToolBar.resx">
       <DependentUpon>Frm_ToolBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PluginBase\Frm_ToolBase.resx">
+    <EmbeddedResource Include="ToolBase\Frm_ToolBase.resx">
       <DependentUpon>Frm_ToolBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ShowDisplay.resx">
+      <DependentUpon>ShowDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uLink.resx">
+      <DependentUpon>uLink.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -132,7 +215,48 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\停止执行.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\循环执行.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\开始执行.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除流程.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除文件夹.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\添加流程.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\添加文件夹.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\File.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\子流程.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ActionCenterNotificationMirrored.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\清空.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\链接.svg" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

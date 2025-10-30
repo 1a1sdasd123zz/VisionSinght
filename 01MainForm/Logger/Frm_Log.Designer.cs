@@ -34,9 +34,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.col_Time = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_Type = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_LogMessage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Info = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Warning = new DevExpress.XtraEditors.SimpleButton();
@@ -128,10 +125,6 @@
             // 
             this.gridView1.Appearance.Empty.BackColor = System.Drawing.Color.Black;
             this.gridView1.Appearance.Empty.Options.UseBackColor = true;
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.col_Time,
-            this.col_Type,
-            this.col_LogMessage});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -142,64 +135,6 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.PaintStyleName = "Skin";
-            // 
-            // col_Time
-            // 
-            this.col_Time.AppearanceCell.BackColor = System.Drawing.Color.Black;
-            this.col_Time.AppearanceCell.ForeColor = System.Drawing.Color.Lime;
-            this.col_Time.AppearanceCell.Options.UseBackColor = true;
-            this.col_Time.AppearanceCell.Options.UseForeColor = true;
-            this.col_Time.AppearanceHeader.BackColor = System.Drawing.Color.Black;
-            this.col_Time.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.col_Time.AppearanceHeader.ForeColor = System.Drawing.Color.White;
-            this.col_Time.AppearanceHeader.Options.UseBackColor = true;
-            this.col_Time.AppearanceHeader.Options.UseFont = true;
-            this.col_Time.AppearanceHeader.Options.UseForeColor = true;
-            this.col_Time.Caption = "时间";
-            this.col_Time.FieldName = "Time";
-            this.col_Time.MaxWidth = 200;
-            this.col_Time.MinWidth = 30;
-            this.col_Time.Name = "col_Time";
-            this.col_Time.Visible = true;
-            this.col_Time.VisibleIndex = 0;
-            this.col_Time.Width = 200;
-            // 
-            // col_Type
-            // 
-            this.col_Type.AppearanceCell.BackColor = System.Drawing.Color.Black;
-            this.col_Type.AppearanceCell.ForeColor = System.Drawing.Color.Lime;
-            this.col_Type.AppearanceCell.Options.UseBackColor = true;
-            this.col_Type.AppearanceCell.Options.UseForeColor = true;
-            this.col_Type.AppearanceHeader.BackColor = System.Drawing.Color.Black;
-            this.col_Type.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.col_Type.AppearanceHeader.Options.UseBackColor = true;
-            this.col_Type.AppearanceHeader.Options.UseFont = true;
-            this.col_Type.Caption = "类型";
-            this.col_Type.FieldName = "Type";
-            this.col_Type.MaxWidth = 100;
-            this.col_Type.MinWidth = 10;
-            this.col_Type.Name = "col_Type";
-            this.col_Type.Visible = true;
-            this.col_Type.VisibleIndex = 1;
-            this.col_Type.Width = 77;
-            // 
-            // col_LogMessage
-            // 
-            this.col_LogMessage.AppearanceCell.BackColor = System.Drawing.Color.Black;
-            this.col_LogMessage.AppearanceCell.ForeColor = System.Drawing.Color.Lime;
-            this.col_LogMessage.AppearanceCell.Options.UseBackColor = true;
-            this.col_LogMessage.AppearanceCell.Options.UseForeColor = true;
-            this.col_LogMessage.AppearanceHeader.BackColor = System.Drawing.Color.Black;
-            this.col_LogMessage.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.col_LogMessage.AppearanceHeader.Options.UseBackColor = true;
-            this.col_LogMessage.AppearanceHeader.Options.UseFont = true;
-            this.col_LogMessage.Caption = "日志内容";
-            this.col_LogMessage.FieldName = "Content";
-            this.col_LogMessage.MinWidth = 100;
-            this.col_LogMessage.Name = "col_LogMessage";
-            this.col_LogMessage.Visible = true;
-            this.col_LogMessage.VisibleIndex = 2;
-            this.col_LogMessage.Width = 276;
             // 
             // flowLayoutPanel1
             // 
@@ -314,9 +249,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn col_Time;
-        private DevExpress.XtraGrid.Columns.GridColumn col_Type;
         private DevExpress.XtraGrid.Columns.GridColumn col_Content;
-        private DevExpress.XtraGrid.Columns.GridColumn col_LogMessage;
     }
 }

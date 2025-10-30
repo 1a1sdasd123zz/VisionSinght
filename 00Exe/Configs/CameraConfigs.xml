@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 <ArrayOfCameraConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CameraConfig>
+    <SerialNumber>CC26582AAK00077</SerialNumber>
+    <Manufacturer>华睿面阵相机</Manufacturer>
+    <Expain>相机1</Expain>
+    <PluginInfo>
+      <TypeName>iRAYPLECamera.IRAYPLECamera</TypeName>
+      <AssemblyName>iRAYPLECamera</AssemblyName>
+    </PluginInfo>
+  </CameraConfig>
+  <CameraConfig>
     <SerialNumber>00G44626044</SerialNumber>
     <Manufacturer>海康面阵相机</Manufacturer>
     <Expain>相机0</Expain>

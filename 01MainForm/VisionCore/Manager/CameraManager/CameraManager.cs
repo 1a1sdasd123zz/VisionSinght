@@ -9,7 +9,7 @@ using System.Threading;
 using System.Xml.Serialization;
 using HardwareCameraNet;
 using Logger;
-using VisionCore.Manager.PluginManager;
+using VisionCore.Manager.PluginServer;
 
 namespace VisionCore.Manager.CameraManager;
 
@@ -36,7 +36,7 @@ public sealed class CameraManager
     private readonly ConcurrentDictionary<string, CameraConfig> _cameraConfigs = new(StringComparer.OrdinalIgnoreCase);
 
     // 相机实例缓存（序列号 -> 相机实例）
-    private readonly ConcurrentDictionary<string, ICamera?> _cameraInstances = new(StringComparer.OrdinalIgnoreCase);
+    private readonly ConcurrentDictionary<string, ICamera> _cameraInstances = new(StringComparer.OrdinalIgnoreCase);
     // 已连接的相机实例缓存（防止重复连接)
     private readonly ConcurrentDictionary<string, ICamera> _temCameraInstances = new(StringComparer.OrdinalIgnoreCase);
 
@@ -46,7 +46,7 @@ public sealed class CameraManager
 
         if (!Directory.Exists(Path.GetDirectoryName(_configFilePath)!))
             Directory.CreateDirectory(Path.GetDirectoryName(_configFilePath)!);
-        BuildManufacturerMap(CameraPluginManager.Instance.GetLoadedPluginTypes().Values);
+        BuildManufacturerMap(CameraPluginServer.Instance.GetLoadedPluginTypes().Values);
         LoadCameraConfigs();
     }
 
@@ -178,7 +178,7 @@ public sealed class CameraManager
     #region 设备状态事件
 
 
-    private void UpdateDeviceState(string sn, string expain, bool isConnected)
+    private void UpdateDeviceState(string sn, string expain, bool isConnected = true)
     {
         _deviceStates[sn] = (expain, isConnected);
         DeviceStateChanged?.Invoke(sn, expain, isConnected);
@@ -224,6 +224,10 @@ public sealed class CameraManager
         );
         _cameraInstances.TryAdd(config.SerialNumber, CreateCamera(config.Manufacturer, config.SerialNumber));
         SaveCameraConfigs();
+        var connect = _cameraInstances.TryGetValue(config.SerialNumber, out var instance) && instance.IsConnected;
+
+        // 连接、掉线、备注修改时调用
+        UpdateDeviceState(config.SerialNumber, config.Expain, connect);
         return true;
     }
 
@@ -302,7 +306,7 @@ public sealed class CameraManager
             return null;
         }
 
-        // 2. 检查设备是否已枚举（可选：避免创建不存在的设备）
+        //2.检查设备是否已枚举（可选：避免创建不存在的设备）
         var enumeratedDevices = item.EnumerateFunc.Invoke();
         if (!enumeratedDevices.Contains(serialNumber, StringComparer.OrdinalIgnoreCase))
         {
@@ -317,7 +321,6 @@ public sealed class CameraManager
 
         // 3. 创建实例（用插件类型完全限定名）
         var newCamera = (ICamera)Activator.CreateInstance(item.PluginType, serialNumber)!;
-        if (newCamera == null) return null;
         // 添加到线程安全缓存
         _temCameraInstances.TryAdd(serialNumber, newCamera);
         Console.WriteLine($"创建新相机实例并缓存：{serialNumber}");

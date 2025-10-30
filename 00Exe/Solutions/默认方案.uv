@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<SolutionData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="默认方案" Version="1.0">
+  <Process Name="流程0" Id="5a21389befc64df48114cffb4e11ceee" Enabled="true">
+    <Tools>
+      <Tool Id="7a4b9bafb9744195827b569481da8d4a" Name="本地图像" TypeKey="本地图像" AssemblyQualifiedType="LocalImage.LocalImage, LocalImage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Enabled="true">
+        <SettingsJson>&lt;?xml version="1.0"?&gt;
+&lt;LocalImageSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;Enable&gt;true&lt;/Enable&gt;
+  &lt;RunMode&gt;File&lt;/RunMode&gt;
+  &lt;FolderMode&gt;Loop&lt;/FolderMode&gt;
+  &lt;SingleFilePath&gt;C:\Users\23994\Desktop\正面线扫检测_1_17_13_53_62.jpg&lt;/SingleFilePath&gt;
+  &lt;Files /&gt;
+&lt;/LocalImageSettings&gt;</SettingsJson>
+      </Tool>
+      <Tool Id="2bd0580c0c8145129911006ac64cdb25" Name="图像保存" TypeKey="图像保存" AssemblyQualifiedType="SaveImage.SaveImage, SaveImage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Enabled="true">
+        <SettingsJson>AAEAAAD/////AQAAAAAAAAAMAgAAAEBTYXZlSW1hZ2UsIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsDAMAAABBVmlzaW9uQ29yZSwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwFAQAAACVTYXZlSW1hZ2UuU2F2ZUltYWdlK1NhdmVJbWFnZVNldHRpbmdzBAAAAAtMaW5rQ29udGV4dBJVc2VMaW5rZWREaXJlY3RvcnkSTG9jYWxTYXZlRGlyZWN0b3J5C0ltYWdlRm9ybWF0BAABASJWaXNpb25Db3JlLkxpbmtpbmcuVG9vbExpbmtDb250ZXh0AwAAAAECAAAACQQAAAAABgUAAAAbQzpcVXNlcnNcMjM5OTRcRGVza3RvcFxUZXN0BgYAAAADcG5nBQQAAAAiVmlzaW9uQ29yZS5MaW5raW5nLlRvb2xMaW5rQ29udGV4dAEAAAAZPEJpbmRpbmdzPmtfX0JhY2tpbmdGaWVsZAOGAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVmlzaW9uQ29yZS5MaW5raW5nLkxpbmtCaW5kaW5nLCBWaXNpb25Db3JlLCBWZXJzaW9uPTEuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbF1dAwAAAAkHAAAABAcAAACGAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVmlzaW9uQ29yZS5MaW5raW5nLkxpbmtCaW5kaW5nLCBWaXNpb25Db3JlLCBWZXJzaW9uPTEuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbF1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAgVmlzaW9uQ29yZS5MaW5raW5nLkxpbmtCaW5kaW5nW10DAAAACAgJCAAAAAEAAAABAAAABwgAAAAAAQAAAAQAAAAEHlZpc2lvbkNvcmUuTGlua2luZy5MaW5rQmluZGluZwMAAAAJCQAAAA0DBQkAAAAeVmlzaW9uQ29yZS5MaW5raW5nLkxpbmtCaW5kaW5nAwAAAB88VGFyZ2V0UHJvcGVydHk+a19fQmFja2luZ0ZpZWxkGzxTb3VyY2VQYXRoPmtfX0JhY2tpbmdGaWVsZBw8Q29udmVydGVySWQ+a19fQmFja2luZ0ZpZWxkAQEBAwAAAAYKAAAACklucHV0SW1hZ2UGCwAAACDmtYHnqIswLuacrOWcsOWbvuWDjy5PdXRwdXRJbWFnZQoL</SettingsJson>
+      </Tool>
+    </Tools>
+  </Process>
+</SolutionData>

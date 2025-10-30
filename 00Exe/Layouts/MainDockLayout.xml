@@ -28,7 +28,7 @@
     <property name="ShowCloseButton">true</property>
     <property name="FloatOnDblClick">true</property>
   </property>
-  <property name="ActivePanelID">-1</property>
+  <property name="ActivePanelID">4</property>
   <property name="XtraSerializableScreenConfiguration" iskey="true" value="1">
     <property name="Item1">@1,X=0@1,Y=0@4,Width=2560@4,Height=1440</property>
   </property>
@@ -80,8 +80,8 @@
       <property name="ID">32b62a6b-e699-493f-a4f9-d3f8103c9602</property>
       <property name="XtraID">0</property>
       <property name="XtraActiveChildID">-1</property>
-      <property name="XtraBounds">@1,X=0@2,Y=67@3,Width=337@4,Height=1243</property>
-      <property name="OriginalSize">@3,Width=337@3,Height=200</property>
+      <property name="XtraBounds">@1,X=0@3,Y=126@3,Width=368@4,Height=1184</property>
+      <property name="OriginalSize">@3,Width=368@3,Height=200</property>
       <property name="XtraZIndex">3</property>
       <property name="SavedDock">Float</property>
     </property>
@@ -132,8 +132,8 @@
       <property name="ID">91d9be1f-fc87-4ae7-928f-5d2c2c5945b7</property>
       <property name="XtraID">1</property>
       <property name="XtraActiveChildID">-1</property>
-      <property name="XtraBounds">@3,X=337@2,Y=67@3,Width=457@4,Height=1243</property>
-      <property name="OriginalSize">@3,Width=457@3,Height=200</property>
+      <property name="XtraBounds">@3,X=368@3,Y=126@3,Width=402@4,Height=1184</property>
+      <property name="OriginalSize">@3,Width=402@3,Height=200</property>
       <property name="XtraZIndex">2</property>
       <property name="SavedDock">Float</property>
     </property>
@@ -184,7 +184,7 @@
       <property name="ID">a70686f3-b22e-4226-b271-2796164acc5a</property>
       <property name="XtraID">2</property>
       <property name="XtraActiveChildID">-1</property>
-      <property name="XtraBounds">@3,X=794@2,Y=67@4,Width=1766@3,Height=779</property>
+      <property name="XtraBounds">@3,X=770@3,Y=126@4,Width=1790@3,Height=779</property>
       <property name="OriginalSize">@3,Width=200@3,Height=779</property>
       <property name="XtraZIndex">1</property>
       <property name="SavedDock">Float</property>
@@ -236,7 +236,7 @@
       <property name="ID">ccc77060-0038-4d2c-9d6a-33ca44983355</property>
       <property name="XtraID">3</property>
       <property name="XtraActiveChildID">-1</property>
-      <property name="XtraBounds">@3,X=794@3,Y=846@4,Width=1766@3,Height=464</property>
+      <property name="XtraBounds">@3,X=770@3,Y=905@4,Width=1790@3,Height=405</property>
       <property name="OriginalSize">@4,Width=1570@3,Height=200</property>
       <property name="XtraZIndex">0</property>
       <property name="SavedDock">Float</property>
@@ -288,8 +288,8 @@
       <property name="ID">21e68503-0aea-4969-8018-3815e62bf299</property>
       <property name="XtraID">4</property>
       <property name="XtraActiveChildID">-1</property>
-      <property name="XtraBounds">@1,X=0@1,Y=0@3,Width=337@3,Height=506</property>
-      <property name="OriginalSize">@3,Width=286@3,Height=506</property>
+      <property name="XtraBounds">@1,X=0@1,Y=0@3,Width=368@3,Height=527</property>
+      <property name="OriginalSize">@3,Width=368@3,Height=527</property>
       <property name="XtraZIndex">0</property>
       <property name="SavedDock">Float</property>
     </property>
@@ -340,8 +340,8 @@
       <property name="ID">2a363170-7f8d-4f46-ba15-d33731395098</property>
       <property name="XtraID">5</property>
       <property name="XtraActiveChildID">-1</property>
-      <property name="XtraBounds">@1,X=0@3,Y=506@3,Width=337@3,Height=737</property>
-      <property name="OriginalSize">@3,Width=286@3,Height=737</property>
+      <property name="XtraBounds">@1,X=0@3,Y=527@3,Width=368@3,Height=657</property>
+      <property name="OriginalSize">@3,Width=368@3,Height=657</property>
       <property name="XtraZIndex">1</property>
       <property name="SavedDock">Float</property>
     </property>
@@ -392,8 +392,8 @@
       <property name="ID">e48cb829-bc0c-4ef7-9f15-1da4ac7fce49</property>
       <property name="XtraID">6</property>
       <property name="XtraActiveChildID">-1</property>
-      <property name="XtraBounds">@1,X=0@1,Y=0@4,Width=1468@3,Height=464</property>
-      <property name="OriginalSize">@4,Width=1672@3,Height=464</property>
+      <property name="XtraBounds">@1,X=0@1,Y=0@4,Width=1488@3,Height=405</property>
+      <property name="OriginalSize">@4,Width=1392@3,Height=405</property>
       <property name="XtraZIndex">0</property>
       <property name="SavedDock">Float</property>
     </property>
@@ -444,8 +444,8 @@
       <property name="ID">ce17dcae-4613-462a-8655-761e302ed488</property>
       <property name="XtraID">7</property>
       <property name="XtraActiveChildID">-1</property>
-      <property name="XtraBounds">@4,X=1468@1,Y=0@3,Width=298@3,Height=464</property>
-      <property name="OriginalSize">@3,Width=340@3,Height=464</property>
+      <property name="XtraBounds">@4,X=1488@1,Y=0@3,Width=302@3,Height=405</property>
+      <property name="OriginalSize">@3,Width=283@3,Height=405</property>
       <property name="XtraZIndex">1</property>
       <property name="SavedDock">Float</property>
     </property>

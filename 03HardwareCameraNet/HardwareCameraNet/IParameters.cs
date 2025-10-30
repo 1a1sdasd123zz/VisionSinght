@@ -18,6 +18,15 @@ public interface IParameters
     double Gain { get; set; }
     double MaxGain { get; }
     /// <summary>
+    /// 图像宽度
+    /// </summary>
+    int Width { get; set; }
+    /// <summary>
+    /// 图像高度
+    /// </summary>
+    int Height { get; set; }
+
+    /// <summary>
     /// 当前触发源
     /// </summary>
     string TriggerSoure { get;set; }

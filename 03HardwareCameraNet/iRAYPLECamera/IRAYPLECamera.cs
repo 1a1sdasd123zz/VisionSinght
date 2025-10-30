@@ -7,6 +7,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Cognex.VisionPro;
 using HardwareCameraNet;
 using MVSDK_Net;
 
@@ -14,7 +15,7 @@ namespace iRAYPLECamera;
 
 // 标记支持的品牌名称
 [CameraManufacturer("华睿面阵相机")]
-public class IRAYPLECamera : IDevice2D
+public class IRAYPLECamera : ICamera
 {
 
     #region 相机属性
@@ -38,8 +39,8 @@ public class IRAYPLECamera : IDevice2D
 
     #region 属性
     // 图像回调事件（需显式实现事件添加/移除逻辑，确保线程安全）
-    private event EventHandler<object> frameGrabedEvent;
-    public event EventHandler<object> FrameGrabedEvent
+    private event EventHandler<ICogImage> frameGrabedEvent;
+    public event EventHandler<ICogImage> FrameGrabedEvent
     {
         add => frameGrabedEvent += value;
         remove => frameGrabedEvent -= value;
@@ -47,6 +48,7 @@ public class IRAYPLECamera : IDevice2D
     public event EventHandler<bool> DisConnetEvent;
     
     public string SN { get; }
+    public CameraType Type => CameraType.AreaScan;
     public bool IsConnected => device.IMV_IsOpen();
     public IParameters Parameters { get; }
     #endregion
@@ -138,10 +140,12 @@ public class IRAYPLECamera : IDevice2D
                 return res;
             }
             //ch：创建异步处理线程 | en: Create an asynchronous processing thread
-            _processThreadExit = false;
-            _asyncProcessThread = new Thread(AsyncProcessThread) { IsBackground = true };
-            _asyncProcessThread.Start();
-
+            if (_asyncProcessThread == null)
+            {
+                _processThreadExit = false;
+                _asyncProcessThread = new Thread(AsyncProcessThread) { IsBackground = true };
+                _asyncProcessThread.Start();
+            }
             res = StartGrabbing();
             return IMVDefine.IMV_OK != res ? res : IMVDefine.IMV_OK;
         }
@@ -151,7 +155,8 @@ public class IRAYPLECamera : IDevice2D
             return -1;
         }
     }
-    public void SetSoftwareTrigger()
+
+    private void SetSoftwareTrigger()
     {
         // 设置触发源为软触发 
         // Set trigger source to Software 
@@ -242,7 +247,6 @@ public class IRAYPLECamera : IDevice2D
         //关闭相机
         //Close camera 
         StopGrabbing();
-        StopThread();
         var res = device.IMV_Close();
         if (res != IMVDefine.IMV_OK)
         {
@@ -254,7 +258,9 @@ public class IRAYPLECamera : IDevice2D
     {
         //关闭相机
         //Close camera 
-        StopThread();
+        //ch: 通知异步处理线程退出 | en: Notify the thread to exit
+        _processThreadExit = true;
+        StopGrabbing();
         var res = device.IMV_Close();
         if (res != IMVDefine.IMV_OK)
         {
@@ -283,7 +289,6 @@ public class IRAYPLECamera : IDevice2D
             // offLine notify 
             case IMVDefine.IMV_EVType.offLine:
                 DisConnetEvent?.Invoke(this, true);
-                StopThread();
                 Console.WriteLine($"[{SN}]Device disconnect!");
                 break;
             // 上线通知
@@ -291,8 +296,13 @@ public class IRAYPLECamera : IDevice2D
             case IMVDefine.IMV_EVType.onLine:
                 {
                     device.IMV_Close();
-                    if(IMVDefine.IMV_OK != Open())
+                    if (IMVDefine.IMV_OK != Open())
+                    {
                         Console.WriteLine($"[{SN}]Device Reconnect Fail!");
+                        return;
+                    }
+                        
+                    DisConnetEvent?.Invoke(this, false);
                     break;
                 }
         }
@@ -362,7 +372,17 @@ public class IRAYPLECamera : IDevice2D
 
                         if (bmp != null)
                         {
-                            frameGrabedEvent?.Invoke(this, bmp.Clone());
+                            ICogImage img;
+                            if (bmp.PixelFormat == PixelFormat.Format24bppRgb)
+                            {
+                                img = new CogImage24PlanarColor(bmp);
+                            }
+                            else
+                            {
+                                img = new CogImage8Grey(bmp);
+                            }
+
+                            frameGrabedEvent?.Invoke(this, img);
                             _stopwatch.Stop();
                             bmp.Dispose();
                             GC.Collect();
@@ -498,19 +518,6 @@ public class IRAYPLECamera : IDevice2D
 
     #endregion
 
-    private void StopThread()
-    {
-        try
-        {
-            //ch: 通知异步处理线程退出 | en: Notify the thread to exit
-            _processThreadExit = true;
-            _asyncProcessThread.Join();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-        }
-    }
     /// <summary>
     /// 指针之间进行数据拷贝
     /// </summary>
@@ -520,7 +527,7 @@ public class IRAYPLECamera : IDevice2D
     [DllImport("Kernel32.dll", EntryPoint = "RtlMoveMemory", CharSet = CharSet.Ansi)]
     private static extern void CopyMemory(IntPtr pDst, IntPtr pSrc, int len);
 
-    #region 海康相机的IParameters实现类（内部类）
+    #region 相机的IParameters实现类（内部类）
 
     private class DahuaParameters(IRAYPLECamera dahuaCamera) : IParameters
     {
@@ -566,6 +573,32 @@ public class IRAYPLECamera : IDevice2D
             }
         }
 
+        public int Width {
+            get
+            {
+                long val = 0;
+                dahuaCamera.device.IMV_GetIntFeatureValue("Width", ref val);
+                return (int)val;
+            }
+            set
+            {
+
+            }
+        }
+        public int Height
+        {
+            get
+            {
+                long val = 0;
+                dahuaCamera.device.IMV_GetIntFeatureValue("Height", ref val);
+                return (int)val;
+            }
+            set
+            {
+
+            }
+        }
+
         public string TriggerSoure
         {
             get
@@ -578,7 +611,7 @@ public class IRAYPLECamera : IDevice2D
             set
             {
                 dahuaCamera.device.IMV_SetEnumFeatureSymbol("TriggerMode", "On");
-                dahuaCamera.device.IMV_SetEnumFeatureSymbol("TriggerSource", "Software");
+                dahuaCamera.device.IMV_SetEnumFeatureSymbol("TriggerSource", value);
             }
         }
 
