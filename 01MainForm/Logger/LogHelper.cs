@@ -16,6 +16,7 @@ public static class LogHelper
 
     private static readonly NLog.Logger logger = LogManager.GetCurrentClassLogger();
     private static readonly List<LogEntry> _cache = new();
+    private static readonly object _cacheLock = new object();
     private const int _maxCount = 2000;
 
     static LogHelper()
@@ -58,12 +59,21 @@ public static class LogHelper
         catch { }
     }
 
-    internal static IReadOnlyList<LogEntry> Logs => _cache;
+    internal static IReadOnlyList<LogEntry> Logs
+    {
+        get
+        {
+            lock (_cacheLock)
+            {
+                return _cache.ToList();
+            }
+        }
+    }
 
     /// <summary>
     /// 记录信息日志（来源：软件）
     /// </summary>
-    public static void Info(string message,string src = "软件")
+    public static void Info(string message, string src = "软件")
     {
         logger.Info(message);
         Cache(LogLevel.Info, message, src);
@@ -113,17 +123,22 @@ public static class LogHelper
             Message = message
         };
 
-        if (_cache.Count >= _maxCount)
-            _cache.RemoveAt(0);
-        _cache.Add(entry);
+        lock (_cacheLock)
+        {
+            if (_cache.Count >= _maxCount)
+                _cache.RemoveAt(0);
+            _cache.Add(entry);
+        }
 
         // 仅在日志实际改变时才触发事件，避免不必要的UI更新
         if (level == LogLevel.Error || level == LogLevel.Fatal)
         {
             LogChanged?.Invoke();
         }
+
         try { LogAppended?.Invoke(entry); } catch { }
     }
+
     private static string GetExceptionSource(Exception ex)
     {
         var site = ex.TargetSite;
@@ -135,11 +150,15 @@ public static class LogHelper
 
         return string.IsNullOrWhiteSpace(src) ? (ex.GetType().FullName ?? "异常") : src;
     }
+
     internal static List<LogEntry> GetLogsByType(LogLevel? level = null)
     {
-        if (level == null)
-            return _cache.ToList();
-        return _cache.Where(l => l.Level == level).ToList();
+        lock (_cacheLock)
+        {
+            if (level == null)
+                return _cache.ToList();
+            return _cache.Where(l => l.Level == level).ToList();
+        }
     }
 }
 

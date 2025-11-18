@@ -28,227 +28,119 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Log));
-            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Info = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Warning = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Error = new DevExpress.XtraEditors.SimpleButton();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // xtraTabControl1
-            // 
-            this.xtraTabControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.xtraTabControl1.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.xtraTabControl1.Appearance.Options.UseBackColor = true;
-            this.xtraTabControl1.Appearance.Options.UseBorderColor = true;
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Bottom;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(563, 790);
-            this.xtraTabControl1.TabIndex = 0;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
-            this.xtraTabPage2});
-            // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Appearance.Header.BackColor = System.Drawing.Color.Black;
-            this.xtraTabPage1.Appearance.Header.ForeColor = System.Drawing.Color.Black;
-            this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
-            this.xtraTabPage1.Appearance.Header.Options.UseForeColor = true;
-            this.xtraTabPage1.Appearance.HeaderActive.ForeColor = System.Drawing.Color.Black;
-            this.xtraTabPage1.Appearance.HeaderActive.Options.UseBackColor = true;
-            this.xtraTabPage1.Appearance.HeaderActive.Options.UseBorderColor = true;
-            this.xtraTabPage1.Appearance.HeaderActive.Options.UseForeColor = true;
-            this.xtraTabPage1.Appearance.HeaderDisabled.ForeColor = System.Drawing.Color.Black;
-            this.xtraTabPage1.Appearance.HeaderDisabled.Options.UseForeColor = true;
-            this.xtraTabPage1.Appearance.HeaderHotTracked.ForeColor = System.Drawing.Color.Black;
-            this.xtraTabPage1.Appearance.HeaderHotTracked.Options.UseBackColor = true;
-            this.xtraTabPage1.Appearance.HeaderHotTracked.Options.UseBorderColor = true;
-            this.xtraTabPage1.Appearance.HeaderHotTracked.Options.UseForeColor = true;
-            this.xtraTabPage1.Appearance.PageClient.BackColor = System.Drawing.Color.Black;
-            this.xtraTabPage1.Appearance.PageClient.ForeColor = System.Drawing.Color.Black;
-            this.xtraTabPage1.Appearance.PageClient.Options.UseBackColor = true;
-            this.xtraTabPage1.Appearance.PageClient.Options.UseBorderColor = true;
-            this.xtraTabPage1.Appearance.PageClient.Options.UseForeColor = true;
-            this.xtraTabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.xtraTabPage1.Controls.Add(this.memoEdit1);
-            this.xtraTabPage1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(561, 752);
-            this.xtraTabPage1.Text = "[日志信息]";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.gridControl1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(561, 752);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(3, 52);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(555, 697);
-            this.gridControl1.TabIndex = 3;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Appearance.Empty.BackColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.Empty.Options.UseBackColor = true;
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
-            this.gridView1.OptionsCustomization.AllowColumnMoving = false;
-            this.gridView1.OptionsCustomization.AllowColumnResizing = false;
-            this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.PaintStyleName = "Skin";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Black;
-            this.flowLayoutPanel1.Controls.Add(this.btn_Info);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Warning);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Error);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(555, 43);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // btn_Info
-            // 
-            this.btn_Info.Appearance.BackColor = System.Drawing.SystemColors.GrayText;
-            this.btn_Info.Appearance.ForeColor = System.Drawing.Color.White;
-            this.btn_Info.Appearance.Options.UseBackColor = true;
-            this.btn_Info.Appearance.Options.UseForeColor = true;
-            this.btn_Info.Appearance.Options.UseTextOptions = true;
-            this.btn_Info.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.btn_Info.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Info.ImageOptions.Image")));
-            this.btn_Info.Location = new System.Drawing.Point(3, 3);
-            this.btn_Info.Name = "btn_Info";
-            this.btn_Info.Size = new System.Drawing.Size(150, 35);
-            this.btn_Info.TabIndex = 0;
-            this.btn_Info.Text = "信息";
-            // 
-            // btn_Warning
-            // 
-            this.btn_Warning.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_Warning.Appearance.ForeColor = System.Drawing.Color.White;
-            this.btn_Warning.Appearance.Options.UseBackColor = true;
-            this.btn_Warning.Appearance.Options.UseForeColor = true;
-            this.btn_Warning.Appearance.Options.UseTextOptions = true;
-            this.btn_Warning.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.btn_Warning.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Warning.ImageOptions.Image")));
-            this.btn_Warning.Location = new System.Drawing.Point(159, 3);
-            this.btn_Warning.Name = "btn_Warning";
-            this.btn_Warning.Size = new System.Drawing.Size(150, 35);
-            this.btn_Warning.TabIndex = 1;
-            this.btn_Warning.Text = "警告";
-            // 
-            // btn_Error
-            // 
-            this.btn_Error.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_Error.Appearance.ForeColor = System.Drawing.Color.White;
-            this.btn_Error.Appearance.Options.UseBackColor = true;
-            this.btn_Error.Appearance.Options.UseForeColor = true;
-            this.btn_Error.Appearance.Options.UseTextOptions = true;
-            this.btn_Error.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.btn_Error.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Error.ImageOptions.Image")));
-            this.btn_Error.Location = new System.Drawing.Point(315, 3);
-            this.btn_Error.Name = "btn_Error";
-            this.btn_Error.Size = new System.Drawing.Size(150, 35);
-            this.btn_Error.TabIndex = 2;
-            this.btn_Error.Text = "错误";
-            // 
-            // memoEdit1
-            // 
-            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoEdit1.Location = new System.Drawing.Point(0, 0);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(561, 752);
-            this.memoEdit1.TabIndex = 0;
-            // 
-            // xtraTabPage2
-            // 
-            this.xtraTabPage2.Appearance.Header.BackColor = System.Drawing.Color.Black;
-            this.xtraTabPage2.Appearance.Header.ForeColor = System.Drawing.Color.Black;
-            this.xtraTabPage2.Appearance.Header.Options.UseBackColor = true;
-            this.xtraTabPage2.Appearance.Header.Options.UseForeColor = true;
-            this.xtraTabPage2.Appearance.HeaderActive.ForeColor = System.Drawing.Color.Black;
-            this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
-            this.xtraTabPage2.Appearance.HeaderActive.Options.UseBorderColor = true;
-            this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
-            this.xtraTabPage2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.xtraTabPage2.Size = new System.Drawing.Size(561, 752);
-            this.xtraTabPage2.Text = "[数据栏]";
-            // 
-            // Frm_Log
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.xtraTabControl1);
-            this.Name = "Frm_Log";
-            this.Size = new System.Drawing.Size(563, 790);
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
-            this.ResumeLayout(false);
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+      this.btn_Info = new System.Windows.Forms.Button();
+      this.btn_Warning = new System.Windows.Forms.Button();
+      this.btn_Error = new System.Windows.Forms.Button();
+      this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.tableLayoutPanel1.SuspendLayout();
+      this.flowLayoutPanel1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      this.SuspendLayout();
+      // 
+      // tableLayoutPanel1
+      // 
+      this.tableLayoutPanel1.ColumnCount = 1;
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 2;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(563, 747);
+      this.tableLayoutPanel1.TabIndex = 0;
+      // 
+      // flowLayoutPanel1
+      // 
+      this.flowLayoutPanel1.BackColor = System.Drawing.Color.Black;
+      this.flowLayoutPanel1.Controls.Add(this.btn_Info);
+      this.flowLayoutPanel1.Controls.Add(this.btn_Warning);
+      this.flowLayoutPanel1.Controls.Add(this.btn_Error);
+      this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+      this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+      this.flowLayoutPanel1.Size = new System.Drawing.Size(557, 66);
+      this.flowLayoutPanel1.TabIndex = 2;
+      // 
+      // btn_Info
+      // 
+      this.btn_Info.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+      this.btn_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+      this.btn_Info.ForeColor = System.Drawing.Color.White;
+      this.btn_Info.Image = global::Logger.Properties.Resources.信息;
+      this.btn_Info.Location = new System.Drawing.Point(3, 3);
+      this.btn_Info.Name = "btn_Info";
+      this.btn_Info.Size = new System.Drawing.Size(148, 60);
+      this.btn_Info.TabIndex = 4;
+      this.btn_Info.Text = "信息";
+      this.btn_Info.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btn_Info.UseVisualStyleBackColor = false;
+      // 
+      // btn_Warning
+      // 
+      this.btn_Warning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+      this.btn_Warning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+      this.btn_Warning.ForeColor = System.Drawing.Color.White;
+      this.btn_Warning.Image = global::Logger.Properties.Resources.警告;
+      this.btn_Warning.Location = new System.Drawing.Point(157, 3);
+      this.btn_Warning.Name = "btn_Warning";
+      this.btn_Warning.Size = new System.Drawing.Size(148, 60);
+      this.btn_Warning.TabIndex = 5;
+      this.btn_Warning.Text = "警告";
+      this.btn_Warning.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btn_Warning.UseVisualStyleBackColor = false;
+      // 
+      // btn_Error
+      // 
+      this.btn_Error.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+      this.btn_Error.ForeColor = System.Drawing.Color.White;
+      this.btn_Error.Image = global::Logger.Properties.Resources.错误;
+      this.btn_Error.Location = new System.Drawing.Point(311, 3);
+      this.btn_Error.Name = "btn_Error";
+      this.btn_Error.Size = new System.Drawing.Size(148, 60);
+      this.btn_Error.TabIndex = 3;
+      this.btn_Error.Text = "错误";
+      this.btn_Error.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btn_Error.UseVisualStyleBackColor = false;
+      // 
+      // dataGridView1
+      // 
+      this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.dataGridView1.Location = new System.Drawing.Point(3, 75);
+      this.dataGridView1.Name = "dataGridView1";
+      this.dataGridView1.RowHeadersWidth = 62;
+      this.dataGridView1.RowTemplate.Height = 30;
+      this.dataGridView1.Size = new System.Drawing.Size(557, 669);
+      this.dataGridView1.TabIndex = 3;
+      // 
+      // Frm_Log
+      // 
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.tableLayoutPanel1);
+      this.Name = "Frm_Log";
+      this.Size = new System.Drawing.Size(563, 747);
+      this.tableLayoutPanel1.ResumeLayout(false);
+      this.flowLayoutPanel1.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraEditors.MemoEdit memoEdit1;
-        private DevExpress.XtraEditors.SimpleButton btn_Error;
-        private DevExpress.XtraEditors.SimpleButton btn_Warning;
-        private DevExpress.XtraEditors.SimpleButton btn_Info;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn col_Content;
-    }
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+    private System.Windows.Forms.Button btn_Info;
+    private System.Windows.Forms.Button btn_Warning;
+    private System.Windows.Forms.Button btn_Error;
+    private System.Windows.Forms.DataGridView dataGridView1;
+  }
 }
